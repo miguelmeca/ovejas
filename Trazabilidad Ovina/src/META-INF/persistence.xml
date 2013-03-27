@@ -2,6 +2,15 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="Trazabilidad_OvinaPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>model.Estadopartoxpartoxoveja</class>
+    <class>model.Estadoparto</class>
+    <class>model.Ovejaxcorral</class>
+    <class>model.Majada</class>
+    <class>model.Servicio</class>
+    <class>model.Preniez</class>
+    <class>model.Oveja</class>
+    <class>model.Corral</class>
+    <class>model.Parto</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:C:\ProyectoDB\bdovejas"/>
       <property name="javax.persistence.jdbc.password" value=""/>
