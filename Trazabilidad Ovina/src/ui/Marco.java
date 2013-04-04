@@ -27,11 +27,12 @@ public class Marco extends javax.swing.JFrame {
     public Marco() {
         initComponents();
 
+
+
         altaServiciobtn.addActionListener(new java.awt.event.ActionListener() {
 
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegistrarServicioPnl rsp = new RegistrarServicioPnl();
-                rsp.initComponentes();
+                AltaOvejaParto rsp = new AltaOvejaParto();
                 contenidoCentral.add(rsp);
                 rsp.setVisible(true);
                 rsp.setBounds(0, 0, contenidoCentral.getWidth(), contenidoCentral.getHeight());
@@ -530,6 +531,10 @@ public class Marco extends javax.swing.JFrame {
         barraVertical.add(bajaMajadabtn);
         barraVertical.add(editarMajadabtn);
     }//GEN-LAST:event_alimentacionbtnActionPerformed
+
+
+
+
 
     private void animalbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_animalbtnActionPerformed
 
