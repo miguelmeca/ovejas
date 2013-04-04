@@ -4,10 +4,10 @@
 
 package ui;
 
-/**
- *
- * @author edgardo.rodriguez
- */
+import controllers.MajadaJpaController;
+import java.util.List;
+import model.Majada;
+
 public class AltaOvejaParto extends javax.swing.JPanel {
 
     /** Creates new form paneldeprueba */
@@ -27,9 +27,14 @@ public class AltaOvejaParto extends javax.swing.JPanel {
         this.estadoCriaChoice.add("4 Bueno");
         this.estadoCriaChoice.add("5 Muy Bueno");
 
-        this.majadaChoice.add("majada1");
-        this.majadaChoice.add("majada 2");
-
+//        this.majadaChoice.add("majada1");
+//        this.majadaChoice.add("majada 2");
+        MajadaJpaController majadaJpaController = new MajadaJpaController();
+        List<Majada> l = majadaJpaController.findMajadaEntities();
+        for(int i = 0; i < l.size(); i++){
+            this.majadaChoice.add(l.get(i).getMajadanombre());
+        }
+       
         this.sexoChoice.add("Macho");
         this.sexoChoice.add("Hembra");
 

@@ -9,7 +9,7 @@
  * Created on Oct 28, 2010, 12:15:52 PM
  */
 
-package trazabilidadovinaPantallas;
+package ui;
 
 /**
  *
