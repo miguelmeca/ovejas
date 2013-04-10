@@ -13,8 +13,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import model.Preniez;
 import model.Servicio;
 import model.Parto;
@@ -195,9 +193,7 @@ public class PreniezJpaController {
     private List<Preniez> findPreniezEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
-            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Preniez.class));
-            Query q = em.createQuery(cq);
+            Query q = em.createQuery("select object(o) from Preniez as o");
             if (!all) {
                 q.setMaxResults(maxResults);
                 q.setFirstResult(firstResult);
@@ -220,10 +216,7 @@ public class PreniezJpaController {
     public int getPreniezCount() {
         EntityManager em = getEntityManager();
         try {
-            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Preniez> rt = cq.from(Preniez.class);
-            cq.select(em.getCriteriaBuilder().count(rt));
-            Query q = em.createQuery(cq);
+            Query q = em.createQuery("select count(o) from Preniez as o");
             return ((Long) q.getSingleResult()).intValue();
         } finally {
             em.close();
