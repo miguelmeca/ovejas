@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
   <persistence-unit name="Trazabilidad_OvinaPU" transaction-type="RESOURCE_LOCAL">
-    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>model.Estadopartoxpartoxoveja</class>
-    <class>model.Estadoparto</class>
-    <class>model.Ovejaxcorral</class>
-    <class>model.Majada</class>
-    <class>model.Servicio</class>
-    <class>model.Preniez</class>
-    <class>model.Oveja</class>
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>model.Corral</class>
+    <class>model.Estadoparto</class>
+    <class>model.Estadopartoxpartoxoveja</class>
+    <class>model.Majada</class>
+    <class>model.Oveja</class>
+    <class>model.Ovejaxcorral</class>
     <class>model.Parto</class>
+    <class>model.Preniez</class>
+    <class>model.Servicio</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:C:\ProyectoDB\bdovejas"/>
-      <property name="javax.persistence.jdbc.password" value=""/>
-      <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
-      <property name="javax.persistence.jdbc.user" value="sa"/>
-      <property name="eclipselink.ddl-generation" value="create-tables"/>
+      <property name="hibernate.connection.username" value="sa"/>
+      <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver"/>
+      <property name="hibernate.connection.password" value=""/>
+      <property name="hibernate.connection.url" value="jdbc:hsqldb:file:C:\ProyectoDB\bdovejas"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
     </properties>
   </persistence-unit>
 </persistence>
