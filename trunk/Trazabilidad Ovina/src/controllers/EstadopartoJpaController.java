@@ -13,8 +13,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import model.Estadoparto;
 import model.Estadopartoxpartoxoveja;
 import java.util.ArrayList;
@@ -166,9 +164,7 @@ public class EstadopartoJpaController {
     private List<Estadoparto> findEstadopartoEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
-            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Estadoparto.class));
-            Query q = em.createQuery(cq);
+            Query q = em.createQuery("select object(o) from Estadoparto as o");
             if (!all) {
                 q.setMaxResults(maxResults);
                 q.setFirstResult(firstResult);
@@ -191,10 +187,7 @@ public class EstadopartoJpaController {
     public int getEstadopartoCount() {
         EntityManager em = getEntityManager();
         try {
-            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Estadoparto> rt = cq.from(Estadoparto.class);
-            cq.select(em.getCriteriaBuilder().count(rt));
-            Query q = em.createQuery(cq);
+            Query q = em.createQuery("select count(o) from Estadoparto as o");
             return ((Long) q.getSingleResult()).intValue();
         } finally {
             em.close();
