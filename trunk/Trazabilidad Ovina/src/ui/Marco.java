@@ -40,6 +40,17 @@ public class Marco extends javax.swing.JFrame {
             }
         });
 
+         altaCorralesbtn.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdministrarCorral rsp2 = new AdministrarCorral();
+                contenidoCentral.add(rsp2);
+                rsp2.setVisible(true);
+                rsp2.setBounds(0, 0, contenidoCentral.getWidth(), contenidoCentral.getHeight());
+                pack();
+            }
+        });
+
     }
 
     public static JPanel getContenidoCentral() {
@@ -225,16 +236,17 @@ public class Marco extends javax.swing.JFrame {
         barraVertical.setAutoscrolls(true);
 
         contenidoCentral.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        contenidoCentral.setPreferredSize(new java.awt.Dimension(600, 600));
 
         javax.swing.GroupLayout contenidoCentralLayout = new javax.swing.GroupLayout(contenidoCentral);
         contenidoCentral.setLayout(contenidoCentralLayout);
         contenidoCentralLayout.setHorizontalGroup(
             contenidoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 479, Short.MAX_VALUE)
+            .addGap(0, 573, Short.MAX_VALUE)
         );
         contenidoCentralLayout.setVerticalGroup(
             contenidoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 330, Short.MAX_VALUE)
+            .addGap(0, 455, Short.MAX_VALUE)
         );
 
         salir2btn.setText("Salir");
@@ -479,14 +491,16 @@ public class Marco extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(barraVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(contenidoCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(barraVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(404, 404, 404)
                                 .addComponent(salir2btn)
-                                .addGap(36, 36, 36))))
-                    .addComponent(barraHorizontal, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE))
+                                .addGap(36, 36, 36))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(contenidoCentral, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE))))
+                    .addComponent(barraHorizontal, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -495,11 +509,11 @@ public class Marco extends javax.swing.JFrame {
                 .addComponent(barraHorizontal, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(barraVertical, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(contenidoCentral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addComponent(salir2btn)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(contenidoCentral, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(salir2btn))
+                    .addComponent(barraVertical, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -647,7 +661,7 @@ public class Marco extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private JButton granajacorralesbtn = new JButton("CORRALES");
     private JButton granjamajadabtn = new JButton("MAJADAS");
-    private JButton altaCorralesbtn = new JButton("Alta Corral");
+    private JButton altaCorralesbtn = new JButton("Administrar Corrales");
     private JButton bajaCorralesbtn = new JButton("Baja Corral");
     private JButton editarCorralesbtn = new JButton("Editar Corral");
     private JButton altaMajadabtn = new JButton("Alta Majada");
