@@ -9,7 +9,10 @@
  * Created on Oct 28, 2010, 10:25:01 AM
  */
 
-package trazabilidadovinaPantallas;
+package ui;
+
+import javax.swing.ListModel;
+import javax.swing.event.ListDataListener;
 
 /**
  *
@@ -20,6 +23,12 @@ public class RegistrarServicio extends javax.swing.JPanel {
     /** Creates new form RegistrarServicio */
     public RegistrarServicio() {
         initComponents();
+
+        jList1.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "fff", "fff" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
     }
 
     /** This method is called from within the constructor to

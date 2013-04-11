@@ -4,9 +4,12 @@
 
 package ui;
 
+import controllers.EstadopartoJpaController;
 import controllers.MajadaJpaController;
 import java.util.List;
+import model.Estadoparto;
 import model.Majada;
+import org.hibernate.Hibernate;
 
 public class AltaOvejaParto extends javax.swing.JPanel {
 
@@ -15,20 +18,17 @@ public class AltaOvejaParto extends javax.swing.JPanel {
         initComponents();
         this.label1.setSize(60,20);
         //iniiciando componetes desde la base de datos
-        this.estadoMadreChoice.add("1 Malo");
-        this.estadoMadreChoice.add("2 Complicado");
-        this.estadoMadreChoice.add("3 Regular");
-        this.estadoMadreChoice.add("4 Bueno");
-        this.estadoMadreChoice.add("5 Muy Bueno");
 
-        this.estadoCriaChoice.add("1 Malo");
-        this.estadoCriaChoice.add("2 Complicado");
-        this.estadoCriaChoice.add("3 Regular");
-        this.estadoCriaChoice.add("4 Bueno");
-        this.estadoCriaChoice.add("5 Muy Bueno");
+        EstadopartoJpaController estadopartoJpaController = new EstadopartoJpaController();
+        List<Estadoparto> e = estadopartoJpaController.findEstadopartoEntities();
+        for(int i = 0; i < e.size(); i++){
+            this.estadoMadreChoice.add(e.get(i).getEstadodescripcion());
+        }
 
-//        this.majadaChoice.add("majada1");
-//        this.majadaChoice.add("majada 2");
+        for(int i = 0; i < e.size(); i++){
+            this.estadoCriaChoice.add(e.get(i).getEstadodescripcion());
+        }
+        
         MajadaJpaController majadaJpaController = new MajadaJpaController();
         List<Majada> l = majadaJpaController.findMajadaEntities();
         for(int i = 0; i < l.size(); i++){
