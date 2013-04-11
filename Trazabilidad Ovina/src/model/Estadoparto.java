@@ -18,6 +18,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -37,9 +39,10 @@ public class Estadoparto implements Serializable {
     @Column(name = "ESTADOPARTOID")
     private Integer estadopartoid;
     @Basic(optional = false)
-    @Column(name = "ESTADODESCRIPCION")
-    private int estadodescripcion;
+    @Column(name = "ESTADOPARTODESCRIPCION")
+    private String estadodescripcion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoparto")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private Collection<Estadopartoxpartoxoveja> estadopartoxpartoxovejaCollection;
 
     public Estadoparto() {
@@ -49,7 +52,7 @@ public class Estadoparto implements Serializable {
         this.estadopartoid = estadopartoid;
     }
 
-    public Estadoparto(Integer estadopartoid, int estadodescripcion) {
+    public Estadoparto(Integer estadopartoid, String estadodescripcion) {
         this.estadopartoid = estadopartoid;
         this.estadodescripcion = estadodescripcion;
     }
@@ -62,11 +65,11 @@ public class Estadoparto implements Serializable {
         this.estadopartoid = estadopartoid;
     }
 
-    public int getEstadodescripcion() {
+    public String getEstadodescripcion() {
         return estadodescripcion;
     }
 
-    public void setEstadodescripcion(int estadodescripcion) {
+    public void setEstadodescripcion(String estadodescripcion) {
         this.estadodescripcion = estadodescripcion;
     }
 
