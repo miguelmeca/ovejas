@@ -12,8 +12,14 @@ package ui;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
+import javax.swing.tree.DefaultTreeModel;
 import ui.BarraVertical;
 import ui.TablaServicio;
 
@@ -26,6 +32,7 @@ public class Marco extends javax.swing.JFrame {
     /** Creates new form Marco */
     public Marco() {
         initComponents();
+        initComponentes();
 
 
 
@@ -67,13 +74,47 @@ public class Marco extends javax.swing.JFrame {
     }
     
     private void initComponentes() {
-        Image img = Toolkit.getDefaultToolkit().getImage("iconos/oveja.png");
+        Image img = Toolkit.getDefaultToolkit().getImage("ui/ovejaicono2 1.jpg");
         this.setIconImage(img);
         barraVertical.setLayout(null);
         barraVertical.setOrientation(1);
-
+        cargarArbol();
+  
     }
 
+    
+    private void cargarArbol () {
+        
+        DefaultMutableTreeNode granja = new DefaultMutableTreeNode("GRANJA");
+        DefaultTreeModel modelo = new DefaultTreeModel(granja);
+         jTree1 = new JTree(modelo);
+        
+        DefaultMutableTreeNode majada = new DefaultMutableTreeNode("Majadas");
+        DefaultMutableTreeNode corral = new DefaultMutableTreeNode("Corrales");
+        DefaultMutableTreeNode animal=new DefaultMutableTreeNode("Animales");
+        DefaultMutableTreeNode admCorrales=new DefaultMutableTreeNode("Administracion Corrales");
+        
+        modelo.insertNodeInto(majada,granja,0);
+        modelo.insertNodeInto(corral, granja, 1);
+        modelo.insertNodeInto(animal, granja, 2);
+        modelo.insertNodeInto(admCorrales, corral, 0);
+        
+        
+        DefaultTreeCellRenderer render= (DefaultTreeCellRenderer)jTree1.getCellRenderer();
+        render.setLeafIcon(new ImageIcon("ui/imageaaaas.jpg"));
+        render.setOpenIcon(new ImageIcon("ui/imageaaaas.jpg"));
+        render.setClosedIcon(new ImageIcon("ui/imageaaaas.jpg"));
+       
+   
+        
+   
+      pack();
+
+           
+    }
+    
+    
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -91,10 +132,11 @@ public class Marco extends javax.swing.JFrame {
         animalbtn = new javax.swing.JButton();
         salir1btn = new javax.swing.JButton();
         barraVertical = new javax.swing.JToolBar();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
         contenidoCentral = new javax.swing.JPanel();
         salir2btn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -129,6 +171,7 @@ public class Marco extends javax.swing.JFrame {
         jMenuItem25 = new javax.swing.JMenuItem();
         jMenuItem26 = new javax.swing.JMenuItem();
         jMenuItem27 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenu13 = new javax.swing.JMenu();
         jMenuItem28 = new javax.swing.JMenuItem();
@@ -167,7 +210,6 @@ public class Marco extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trazabilidad Ovina");
-        setIconImage(new javax.swing.ImageIcon(getClass().getResource('D:\PROYECTO FINAL\Trazabilidad Ovina\src\ui\ovejaicono2 1.jpg')).getImage());
         setIconImages(getIconImages());
 
         barraHorizontal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -253,6 +295,11 @@ public class Marco extends javax.swing.JFrame {
         barraVertical.setRollover(true);
         barraVertical.setAutoscrolls(true);
 
+        jTree1.setName("jTreeMenu");
+        jScrollPane1.setViewportView(jTree1);
+
+        barraVertical.add(jScrollPane1);
+
         contenidoCentral.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         contenidoCentral.setPreferredSize(new java.awt.Dimension(600, 600));
 
@@ -273,9 +320,6 @@ public class Marco extends javax.swing.JFrame {
                 salir2btnActionPerformed(evt);
             }
         });
-
-        jMenu1.setText("Archivo");
-        jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Granja");
 
@@ -383,6 +427,9 @@ public class Marco extends javax.swing.JFrame {
         jMenu12.add(jMenuItem27);
 
         jMenu3.add(jMenu12);
+
+        jMenu1.setText("Archivo");
+        jMenu3.add(jMenu1);
 
         jMenuBar1.add(jMenu3);
 
@@ -512,14 +559,12 @@ public class Marco extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(barraVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(422, 422, 422)
-                                .addComponent(salir2btn)
-                                .addGap(36, 36, 36))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(contenidoCentral, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)))))
+                            .addComponent(contenidoCentral, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(salir2btn, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -528,11 +573,11 @@ public class Marco extends javax.swing.JFrame {
                 .addComponent(barraHorizontal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(contenidoCentral, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                        .addComponent(salir2btn))
-                    .addComponent(barraVertical, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(salir2btn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(barraVertical, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -674,6 +719,8 @@ public class Marco extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTree jTree1;
     private javax.swing.JButton salir1btn;
     private javax.swing.JButton salir2btn;
     private javax.swing.JButton sanidadbtn;
@@ -688,7 +735,7 @@ public class Marco extends javax.swing.JFrame {
     private JButton editarMajadabtn = new JButton("Editar Majada");
     private JButton altaServiciobtn = new JButton("Alta Servicio");
     private JButton altaPreniesbtn = new JButton("Alta Preñes");
-
+    
 
     
 }
