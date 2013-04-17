@@ -167,13 +167,16 @@ public class Marco extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trazabilidad Ovina");
-        setIconImage(getIconImage());
-        setIconImages(null);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource('D:\PROYECTO FINAL\Trazabilidad Ovina\src\ui\ovejaicono2 1.jpg')).getImage());
+        setIconImages(getIconImages());
 
         barraHorizontal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         barraHorizontal.setRollover(true);
 
+        granjabtn.setBackground(new java.awt.Color(255, 255, 255));
+        granjabtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/granjaicono2.jpg"))); // NOI18N
         granjabtn.setText("Granja");
+        granjabtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         granjabtn.setFocusable(false);
         granjabtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         granjabtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -184,7 +187,10 @@ public class Marco extends javax.swing.JFrame {
         });
         barraHorizontal.add(granjabtn);
 
+        alimentacionbtn.setBackground(new java.awt.Color(255, 255, 255));
+        alimentacionbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/alimentacionicono2.jpg"))); // NOI18N
         alimentacionbtn.setText("Alimentacion");
+        alimentacionbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         alimentacionbtn.setFocusable(false);
         alimentacionbtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         alimentacionbtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -195,13 +201,19 @@ public class Marco extends javax.swing.JFrame {
         });
         barraHorizontal.add(alimentacionbtn);
 
+        sanidadbtn.setBackground(new java.awt.Color(255, 255, 255));
+        sanidadbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/sanidadicono2.jpg"))); // NOI18N
         sanidadbtn.setText("Sanidad");
+        sanidadbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         sanidadbtn.setFocusable(false);
         sanidadbtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         sanidadbtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         barraHorizontal.add(sanidadbtn);
 
+        administracionbtn.setBackground(new java.awt.Color(255, 255, 255));
+        administracionbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/administracionicono2.jpg"))); // NOI18N
         administracionbtn.setText("Administracion");
+        administracionbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         administracionbtn.setFocusable(false);
         administracionbtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         administracionbtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -212,7 +224,10 @@ public class Marco extends javax.swing.JFrame {
         });
         barraHorizontal.add(administracionbtn);
 
+        animalbtn.setBackground(new java.awt.Color(255, 255, 255));
+        animalbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/animalicono2.jpg"))); // NOI18N
         animalbtn.setText("Animal");
+        animalbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         animalbtn.setFocusable(false);
         animalbtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         animalbtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -223,7 +238,10 @@ public class Marco extends javax.swing.JFrame {
         });
         barraHorizontal.add(animalbtn);
 
+        salir1btn.setBackground(new java.awt.Color(255, 255, 255));
+        salir1btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/cerraricono2.jpg"))); // NOI18N
         salir1btn.setText("Salir");
+        salir1btn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         salir1btn.setFocusable(false);
         salir1btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         salir1btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -242,11 +260,11 @@ public class Marco extends javax.swing.JFrame {
         contenidoCentral.setLayout(contenidoCentralLayout);
         contenidoCentralLayout.setHorizontalGroup(
             contenidoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 573, Short.MAX_VALUE)
+            .addGap(0, 595, Short.MAX_VALUE)
         );
         contenidoCentralLayout.setVerticalGroup(
             contenidoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 455, Short.MAX_VALUE)
+            .addGap(0, 447, Short.MAX_VALUE)
         );
 
         salir2btn.setText("Salir");
@@ -488,32 +506,33 @@ public class Marco extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(barraHorizontal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
                         .addComponent(barraVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(404, 404, 404)
+                                .addGap(422, 422, 422)
                                 .addComponent(salir2btn)
                                 .addGap(36, 36, 36))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(contenidoCentral, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE))))
-                    .addComponent(barraHorizontal, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE))
+                                .addComponent(contenidoCentral, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(barraHorizontal, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(barraHorizontal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(contenidoCentral, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                        .addComponent(contenidoCentral, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addComponent(salir2btn))
-                    .addComponent(barraVertical, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE))
+                    .addComponent(barraVertical, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
