@@ -33,8 +33,7 @@ public class Marco extends javax.swing.JFrame {
     public Marco() {
         initComponents();
         initComponentes();
-
-
+        
 
         altaServiciobtn.addActionListener(new java.awt.event.ActionListener() {
 
@@ -74,10 +73,11 @@ public class Marco extends javax.swing.JFrame {
     }
     
     private void initComponentes() {
-        Image img = Toolkit.getDefaultToolkit().getImage("ui/ovejaicono2 1.jpg");
+        Image img = Toolkit.getDefaultToolkit().getImage("/ui/ovejaicono2 1.jpg");
         this.setIconImage(img);
         barraVertical.setLayout(null);
         barraVertical.setOrientation(1);
+        pack();
         cargarArbol();
   
     }
@@ -101,14 +101,14 @@ public class Marco extends javax.swing.JFrame {
         
         
         DefaultTreeCellRenderer render= (DefaultTreeCellRenderer)jTree1.getCellRenderer();
-        render.setLeafIcon(new ImageIcon("ui/imageaaaas.jpg"));
-        render.setOpenIcon(new ImageIcon("ui/imageaaaas.jpg"));
-        render.setClosedIcon(new ImageIcon("ui/imageaaaas.jpg"));
-       
+        render.setLeafIcon(new ImageIcon("/ui/imageaaaas.jpg"));
+        render.setOpenIcon(new ImageIcon("/ui/imageaaaas.jpg"));
+        render.setClosedIcon(new ImageIcon("/ui/imageaaaas.jpg"));
+
+         pack();
+        jScrollPane1.setViewportView(jTree1);
    
-        
-   
-      pack();
+     
 
            
     }
