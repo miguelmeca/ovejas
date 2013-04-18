@@ -9,9 +9,10 @@
  * Created on Feb 16, 2011, 11:24:27 AM
  */
 
-package trazabilidadovina.Splash;
+package ui;
 import java.awt.Color;
-import trazabilidadovinaPantallas.Principal;
+import ui.BarraProgreso;
+import ui.Marco;
 /**
  *
  * @author edgardo.rodriguez
@@ -68,7 +69,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel2.setLayout(new java.awt.BorderLayout());
         jPanel2.add(progreso, java.awt.BorderLayout.PAGE_START);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trazabilidadovina/images/sheep.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/sheep.jpg"))); // NOI18N
         jLabel1.setAlignmentX(0);
         jLabel1.setAlignmentY(0);
 
@@ -76,7 +77,7 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

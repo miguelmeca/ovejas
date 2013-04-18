@@ -3,9 +3,9 @@
  * and open the template in the editor.
  */
 
-package trazabilidadovina.Splash;
+package ui;
 import javax.swing.JProgressBar;
-import trazabilidadovinaPantallas.Principal;
+import ui.Marco;
 import javax.swing.JFrame;
 /**
  *
@@ -31,7 +31,7 @@ public class BarraProgreso extends Thread{
         progreso.setValue(i);
         pausa(100);
     }
-    new Principal().setVisible(true);
+    new Marco().setVisible(true);
     ini.dispose();
 }
 
