@@ -9,7 +9,7 @@ import controllers.MajadaJpaController;
 import java.util.List;
 import model.Estadoparto;
 import model.Majada;
-import org.hibernate.Hibernate;
+//import org.hibernate.Hibernate;
 
 public class AltaOvejaParto extends javax.swing.JPanel {
 

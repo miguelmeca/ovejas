@@ -17,7 +17,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Principal a = new Principal();
+        Marco a = new Marco();
         
         a.show();
 
