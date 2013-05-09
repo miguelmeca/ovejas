@@ -6,9 +6,7 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -42,8 +39,6 @@ public class Majada implements Serializable {
     private String majadanombre;
     @Column(name = "MAJADADESCRIPCION")
     private String majadadescripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "majada")
-    private Collection<Oveja> ovejaCollection;
 
     public Majada() {
     }
@@ -79,14 +74,6 @@ public class Majada implements Serializable {
 
     public void setMajadadescripcion(String majadadescripcion) {
         this.majadadescripcion = majadadescripcion;
-    }
-
-    public Collection<Oveja> getOvejaCollection() {
-        return ovejaCollection;
-    }
-
-    public void setOvejaCollection(Collection<Oveja> ovejaCollection) {
-        this.ovejaCollection = ovejaCollection;
     }
 
     @Override

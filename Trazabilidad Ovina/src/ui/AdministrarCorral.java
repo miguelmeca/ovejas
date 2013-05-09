@@ -12,8 +12,11 @@
 package ui;
 
 import controllers.CorralJpaController;
+import controllers.OvejaJpaController;
 import java.util.List;
+import javax.swing.JTable;
 import model.Corral;
+import model.Oveja;
 
 /**
  *
@@ -237,6 +240,30 @@ public class AdministrarCorral extends javax.swing.JPanel {
         jTextField1.setText(corral.getCorralnombre());
         jTextField2.setText(corral.getCorralcapacidad().toString());
         jTextArea1.setText(corral.getCorraldescripcion());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "RP", "Sexo", "Fecha Alta", "Peso"
+                }
+        ));
+
+        OvejaJpaController ojc = new OvejaJpaController();
+        List<Oveja> ovejas = ojc.findListaOvejaPorCorral(corral.getCorralid());
+        
+        for(int i = 0; i < ovejas.size(); i++){
+            Oveja oveja = ovejas.get(i);
+            jTable1.setValueAt(oveja.getOvejarp(), i, 0);
+            jTable1.setValueAt(oveja.getOvejasexo(), i, 1);
+            jTable1.setValueAt(oveja.getOvejafechaalta(), i, 2);
+            jTable1.setValueAt(oveja.getOvejapeso(), i, 3);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -252,7 +279,7 @@ public class AdministrarCorral extends javax.swing.JPanel {
         Corral corral = new Corral();
         corral.setCorralnombre(jTextField1.getText());
         corral.setCorraldescripcion(jTextArea1.getText());
-        corral.setCorralcapacidad(6); //LAURA!! Cambiar el valor por jtext.gettext
+        corral.setCorralcapacidad(Integer.parseInt(jTextField2.getText())); //LAURA!! Cambiar el valor por jtext.gettext
         corralJpaController.create(corral);
 
         //Mostrar mensaje!

@@ -46,7 +46,7 @@ public class Corral implements Serializable {
     @Column(name = "CORRALCAPACIDAD")
     private Integer corralcapacidad;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "corral")
-    private Collection<Ovejaxcorral> ovejaxcorralCollection;
+    private Collection<Historialxovejaxcorral> historialxovejaxcorralCollection;
 
     public Corral() {
     }
@@ -92,12 +92,12 @@ public class Corral implements Serializable {
         this.corralcapacidad = corralcapacidad;
     }
 
-    public Collection<Ovejaxcorral> getOvejaxcorralCollection() {
-        return ovejaxcorralCollection;
+    public Collection<Historialxovejaxcorral> getHistorialxovejaxcorralCollection() {
+        return historialxovejaxcorralCollection;
     }
 
-    public void setOvejaxcorralCollection(Collection<Ovejaxcorral> ovejaxcorralCollection) {
-        this.ovejaxcorralCollection = ovejaxcorralCollection;
+    public void setHistorialxovejaxcorralCollection(Collection<Historialxovejaxcorral> historialxovejaxcorralCollection) {
+        this.historialxovejaxcorralCollection = historialxovejaxcorralCollection;
     }
 
     @Override

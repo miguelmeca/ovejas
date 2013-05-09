@@ -49,11 +49,11 @@ public class Parto implements Serializable {
     @Column(name = "PARTOOBSERVACION")
     private String partoobservacion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "parto")
-    private Collection<Estadopartoxpartoxoveja> estadopartoxpartoxovejaCollection;
-    @OneToMany(mappedBy = "parto")
-    private Collection<Oveja> ovejaCollection;
+    private Collection<Criaxestadoxparto> criaxestadoxpartoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parto")
+    private Collection<Madrexestadoxparto> madrexestadoxpartoCollection;
     @JoinColumn(name = "PRENIEZID", referencedColumnName = "PRENIEZID")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Preniez preniez;
 
     public Parto() {
@@ -92,20 +92,20 @@ public class Parto implements Serializable {
         this.partoobservacion = partoobservacion;
     }
 
-    public Collection<Estadopartoxpartoxoveja> getEstadopartoxpartoxovejaCollection() {
-        return estadopartoxpartoxovejaCollection;
+    public Collection<Criaxestadoxparto> getCriaxestadoxpartoCollection() {
+        return criaxestadoxpartoCollection;
     }
 
-    public void setEstadopartoxpartoxovejaCollection(Collection<Estadopartoxpartoxoveja> estadopartoxpartoxovejaCollection) {
-        this.estadopartoxpartoxovejaCollection = estadopartoxpartoxovejaCollection;
+    public void setCriaxestadoxpartoCollection(Collection<Criaxestadoxparto> criaxestadoxpartoCollection) {
+        this.criaxestadoxpartoCollection = criaxestadoxpartoCollection;
     }
 
-    public Collection<Oveja> getOvejaCollection() {
-        return ovejaCollection;
+    public Collection<Madrexestadoxparto> getMadrexestadoxpartoCollection() {
+        return madrexestadoxpartoCollection;
     }
 
-    public void setOvejaCollection(Collection<Oveja> ovejaCollection) {
-        this.ovejaCollection = ovejaCollection;
+    public void setMadrexestadoxpartoCollection(Collection<Madrexestadoxparto> madrexestadoxpartoCollection) {
+        this.madrexestadoxpartoCollection = madrexestadoxpartoCollection;
     }
 
     public Preniez getPreniez() {

@@ -13,13 +13,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
-import model.Oveja;
-import model.Parto;
-import model.Majada;
-import model.Ovejaxcorral;
+import model.Criaxestadoxparto;
 import java.util.ArrayList;
 import java.util.Collection;
-import model.Estadopartoxpartoxoveja;
+import model.Madrexestadoxparto;
+import model.Historialxovejaxcorral;
+import model.Oveja;
 import model.Servicio;
 
 /**
@@ -29,7 +28,7 @@ import model.Servicio;
 public class OvejaJpaController {
 
     public OvejaJpaController() {
-        emf = Persistence.createEntityManagerFactory("Trazabilidad_OvinaPU");
+        emf = Persistence.createEntityManagerFactory("REEMPLAZARPU");
     }
     private EntityManagerFactory emf = null;
 
@@ -38,11 +37,14 @@ public class OvejaJpaController {
     }
 
     public void create(Oveja oveja) {
-        if (oveja.getOvejaxcorralCollection() == null) {
-            oveja.setOvejaxcorralCollection(new ArrayList<Ovejaxcorral>());
+        if (oveja.getCriaxestadoxpartoCollection() == null) {
+            oveja.setCriaxestadoxpartoCollection(new ArrayList<Criaxestadoxparto>());
         }
-        if (oveja.getEstadopartoxpartoxovejaCollection() == null) {
-            oveja.setEstadopartoxpartoxovejaCollection(new ArrayList<Estadopartoxpartoxoveja>());
+        if (oveja.getMadrexestadoxpartoCollection() == null) {
+            oveja.setMadrexestadoxpartoCollection(new ArrayList<Madrexestadoxparto>());
+        }
+        if (oveja.getHistorialxovejaxcorralCollection() == null) {
+            oveja.setHistorialxovejaxcorralCollection(new ArrayList<Historialxovejaxcorral>());
         }
         if (oveja.getServicioCollection() == null) {
             oveja.setServicioCollection(new ArrayList<Servicio>());
@@ -54,28 +56,24 @@ public class OvejaJpaController {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Parto parto = oveja.getParto();
-            if (parto != null) {
-                parto = em.getReference(parto.getClass(), parto.getPartoid());
-                oveja.setParto(parto);
+            Collection<Criaxestadoxparto> attachedCriaxestadoxpartoCollection = new ArrayList<Criaxestadoxparto>();
+            for (Criaxestadoxparto criaxestadoxpartoCollectionCriaxestadoxpartoToAttach : oveja.getCriaxestadoxpartoCollection()) {
+                criaxestadoxpartoCollectionCriaxestadoxpartoToAttach = em.getReference(criaxestadoxpartoCollectionCriaxestadoxpartoToAttach.getClass(), criaxestadoxpartoCollectionCriaxestadoxpartoToAttach.getCriaxestadoxpartoid());
+                attachedCriaxestadoxpartoCollection.add(criaxestadoxpartoCollectionCriaxestadoxpartoToAttach);
             }
-            Majada majada = oveja.getMajada();
-            if (majada != null) {
-                majada = em.getReference(majada.getClass(), majada.getMajadaid());
-                oveja.setMajada(majada);
+            oveja.setCriaxestadoxpartoCollection(attachedCriaxestadoxpartoCollection);
+            Collection<Madrexestadoxparto> attachedMadrexestadoxpartoCollection = new ArrayList<Madrexestadoxparto>();
+            for (Madrexestadoxparto madrexestadoxpartoCollectionMadrexestadoxpartoToAttach : oveja.getMadrexestadoxpartoCollection()) {
+                madrexestadoxpartoCollectionMadrexestadoxpartoToAttach = em.getReference(madrexestadoxpartoCollectionMadrexestadoxpartoToAttach.getClass(), madrexestadoxpartoCollectionMadrexestadoxpartoToAttach.getMadrexestadoxpartoid());
+                attachedMadrexestadoxpartoCollection.add(madrexestadoxpartoCollectionMadrexestadoxpartoToAttach);
             }
-            Collection<Ovejaxcorral> attachedOvejaxcorralCollection = new ArrayList<Ovejaxcorral>();
-            for (Ovejaxcorral ovejaxcorralCollectionOvejaxcorralToAttach : oveja.getOvejaxcorralCollection()) {
-                ovejaxcorralCollectionOvejaxcorralToAttach = em.getReference(ovejaxcorralCollectionOvejaxcorralToAttach.getClass(), ovejaxcorralCollectionOvejaxcorralToAttach.getOvejaxcorralid());
-                attachedOvejaxcorralCollection.add(ovejaxcorralCollectionOvejaxcorralToAttach);
+            oveja.setMadrexestadoxpartoCollection(attachedMadrexestadoxpartoCollection);
+            Collection<Historialxovejaxcorral> attachedHistorialxovejaxcorralCollection = new ArrayList<Historialxovejaxcorral>();
+            for (Historialxovejaxcorral historialxovejaxcorralCollectionHistorialxovejaxcorralToAttach : oveja.getHistorialxovejaxcorralCollection()) {
+                historialxovejaxcorralCollectionHistorialxovejaxcorralToAttach = em.getReference(historialxovejaxcorralCollectionHistorialxovejaxcorralToAttach.getClass(), historialxovejaxcorralCollectionHistorialxovejaxcorralToAttach.getHistorialxovejaxcorralid());
+                attachedHistorialxovejaxcorralCollection.add(historialxovejaxcorralCollectionHistorialxovejaxcorralToAttach);
             }
-            oveja.setOvejaxcorralCollection(attachedOvejaxcorralCollection);
-            Collection<Estadopartoxpartoxoveja> attachedEstadopartoxpartoxovejaCollection = new ArrayList<Estadopartoxpartoxoveja>();
-            for (Estadopartoxpartoxoveja estadopartoxpartoxovejaCollectionEstadopartoxpartoxovejaToAttach : oveja.getEstadopartoxpartoxovejaCollection()) {
-                estadopartoxpartoxovejaCollectionEstadopartoxpartoxovejaToAttach = em.getReference(estadopartoxpartoxovejaCollectionEstadopartoxpartoxovejaToAttach.getClass(), estadopartoxpartoxovejaCollectionEstadopartoxpartoxovejaToAttach.getEstadopartoxpartoxovejaid());
-                attachedEstadopartoxpartoxovejaCollection.add(estadopartoxpartoxovejaCollectionEstadopartoxpartoxovejaToAttach);
-            }
-            oveja.setEstadopartoxpartoxovejaCollection(attachedEstadopartoxpartoxovejaCollection);
+            oveja.setHistorialxovejaxcorralCollection(attachedHistorialxovejaxcorralCollection);
             Collection<Servicio> attachedServicioCollection = new ArrayList<Servicio>();
             for (Servicio servicioCollectionServicioToAttach : oveja.getServicioCollection()) {
                 servicioCollectionServicioToAttach = em.getReference(servicioCollectionServicioToAttach.getClass(), servicioCollectionServicioToAttach.getServicioid());
@@ -89,30 +87,31 @@ public class OvejaJpaController {
             }
             oveja.setServicioCollection1(attachedServicioCollection1);
             em.persist(oveja);
-            if (parto != null) {
-                parto.getOvejaCollection().add(oveja);
-                parto = em.merge(parto);
-            }
-            if (majada != null) {
-                majada.getOvejaCollection().add(oveja);
-                majada = em.merge(majada);
-            }
-            for (Ovejaxcorral ovejaxcorralCollectionOvejaxcorral : oveja.getOvejaxcorralCollection()) {
-                Oveja oldOvejaOfOvejaxcorralCollectionOvejaxcorral = ovejaxcorralCollectionOvejaxcorral.getOveja();
-                ovejaxcorralCollectionOvejaxcorral.setOveja(oveja);
-                ovejaxcorralCollectionOvejaxcorral = em.merge(ovejaxcorralCollectionOvejaxcorral);
-                if (oldOvejaOfOvejaxcorralCollectionOvejaxcorral != null) {
-                    oldOvejaOfOvejaxcorralCollectionOvejaxcorral.getOvejaxcorralCollection().remove(ovejaxcorralCollectionOvejaxcorral);
-                    oldOvejaOfOvejaxcorralCollectionOvejaxcorral = em.merge(oldOvejaOfOvejaxcorralCollectionOvejaxcorral);
+            for (Criaxestadoxparto criaxestadoxpartoCollectionCriaxestadoxparto : oveja.getCriaxestadoxpartoCollection()) {
+                Oveja oldOvejaOfCriaxestadoxpartoCollectionCriaxestadoxparto = criaxestadoxpartoCollectionCriaxestadoxparto.getOveja();
+                criaxestadoxpartoCollectionCriaxestadoxparto.setOveja(oveja);
+                criaxestadoxpartoCollectionCriaxestadoxparto = em.merge(criaxestadoxpartoCollectionCriaxestadoxparto);
+                if (oldOvejaOfCriaxestadoxpartoCollectionCriaxestadoxparto != null) {
+                    oldOvejaOfCriaxestadoxpartoCollectionCriaxestadoxparto.getCriaxestadoxpartoCollection().remove(criaxestadoxpartoCollectionCriaxestadoxparto);
+                    oldOvejaOfCriaxestadoxpartoCollectionCriaxestadoxparto = em.merge(oldOvejaOfCriaxestadoxpartoCollectionCriaxestadoxparto);
                 }
             }
-            for (Estadopartoxpartoxoveja estadopartoxpartoxovejaCollectionEstadopartoxpartoxoveja : oveja.getEstadopartoxpartoxovejaCollection()) {
-                Oveja oldOvejaOfEstadopartoxpartoxovejaCollectionEstadopartoxpartoxoveja = estadopartoxpartoxovejaCollectionEstadopartoxpartoxoveja.getOveja();
-                estadopartoxpartoxovejaCollectionEstadopartoxpartoxoveja.setOveja(oveja);
-                estadopartoxpartoxovejaCollectionEstadopartoxpartoxoveja = em.merge(estadopartoxpartoxovejaCollectionEstadopartoxpartoxoveja);
-                if (oldOvejaOfEstadopartoxpartoxovejaCollectionEstadopartoxpartoxoveja != null) {
-                    oldOvejaOfEstadopartoxpartoxovejaCollectionEstadopartoxpartoxoveja.getEstadopartoxpartoxovejaCollection().remove(estadopartoxpartoxovejaCollectionEstadopartoxpartoxoveja);
-                    oldOvejaOfEstadopartoxpartoxovejaCollectionEstadopartoxpartoxoveja = em.merge(oldOvejaOfEstadopartoxpartoxovejaCollectionEstadopartoxpartoxoveja);
+            for (Madrexestadoxparto madrexestadoxpartoCollectionMadrexestadoxparto : oveja.getMadrexestadoxpartoCollection()) {
+                Oveja oldOvejaOfMadrexestadoxpartoCollectionMadrexestadoxparto = madrexestadoxpartoCollectionMadrexestadoxparto.getOveja();
+                madrexestadoxpartoCollectionMadrexestadoxparto.setOveja(oveja);
+                madrexestadoxpartoCollectionMadrexestadoxparto = em.merge(madrexestadoxpartoCollectionMadrexestadoxparto);
+                if (oldOvejaOfMadrexestadoxpartoCollectionMadrexestadoxparto != null) {
+                    oldOvejaOfMadrexestadoxpartoCollectionMadrexestadoxparto.getMadrexestadoxpartoCollection().remove(madrexestadoxpartoCollectionMadrexestadoxparto);
+                    oldOvejaOfMadrexestadoxpartoCollectionMadrexestadoxparto = em.merge(oldOvejaOfMadrexestadoxpartoCollectionMadrexestadoxparto);
+                }
+            }
+            for (Historialxovejaxcorral historialxovejaxcorralCollectionHistorialxovejaxcorral : oveja.getHistorialxovejaxcorralCollection()) {
+                Oveja oldOvejaOfHistorialxovejaxcorralCollectionHistorialxovejaxcorral = historialxovejaxcorralCollectionHistorialxovejaxcorral.getOveja();
+                historialxovejaxcorralCollectionHistorialxovejaxcorral.setOveja(oveja);
+                historialxovejaxcorralCollectionHistorialxovejaxcorral = em.merge(historialxovejaxcorralCollectionHistorialxovejaxcorral);
+                if (oldOvejaOfHistorialxovejaxcorralCollectionHistorialxovejaxcorral != null) {
+                    oldOvejaOfHistorialxovejaxcorralCollectionHistorialxovejaxcorral.getHistorialxovejaxcorralCollection().remove(historialxovejaxcorralCollectionHistorialxovejaxcorral);
+                    oldOvejaOfHistorialxovejaxcorralCollectionHistorialxovejaxcorral = em.merge(oldOvejaOfHistorialxovejaxcorralCollectionHistorialxovejaxcorral);
                 }
             }
             for (Servicio servicioCollectionServicio : oveja.getServicioCollection()) {
@@ -147,33 +146,39 @@ public class OvejaJpaController {
             em = getEntityManager();
             em.getTransaction().begin();
             Oveja persistentOveja = em.find(Oveja.class, oveja.getOvejaid());
-            Parto partoOld = persistentOveja.getParto();
-            Parto partoNew = oveja.getParto();
-            Majada majadaOld = persistentOveja.getMajada();
-            Majada majadaNew = oveja.getMajada();
-            Collection<Ovejaxcorral> ovejaxcorralCollectionOld = persistentOveja.getOvejaxcorralCollection();
-            Collection<Ovejaxcorral> ovejaxcorralCollectionNew = oveja.getOvejaxcorralCollection();
-            Collection<Estadopartoxpartoxoveja> estadopartoxpartoxovejaCollectionOld = persistentOveja.getEstadopartoxpartoxovejaCollection();
-            Collection<Estadopartoxpartoxoveja> estadopartoxpartoxovejaCollectionNew = oveja.getEstadopartoxpartoxovejaCollection();
+            Collection<Criaxestadoxparto> criaxestadoxpartoCollectionOld = persistentOveja.getCriaxestadoxpartoCollection();
+            Collection<Criaxestadoxparto> criaxestadoxpartoCollectionNew = oveja.getCriaxestadoxpartoCollection();
+            Collection<Madrexestadoxparto> madrexestadoxpartoCollectionOld = persistentOveja.getMadrexestadoxpartoCollection();
+            Collection<Madrexestadoxparto> madrexestadoxpartoCollectionNew = oveja.getMadrexestadoxpartoCollection();
+            Collection<Historialxovejaxcorral> historialxovejaxcorralCollectionOld = persistentOveja.getHistorialxovejaxcorralCollection();
+            Collection<Historialxovejaxcorral> historialxovejaxcorralCollectionNew = oveja.getHistorialxovejaxcorralCollection();
             Collection<Servicio> servicioCollectionOld = persistentOveja.getServicioCollection();
             Collection<Servicio> servicioCollectionNew = oveja.getServicioCollection();
             Collection<Servicio> servicioCollection1Old = persistentOveja.getServicioCollection1();
             Collection<Servicio> servicioCollection1New = oveja.getServicioCollection1();
             List<String> illegalOrphanMessages = null;
-            for (Ovejaxcorral ovejaxcorralCollectionOldOvejaxcorral : ovejaxcorralCollectionOld) {
-                if (!ovejaxcorralCollectionNew.contains(ovejaxcorralCollectionOldOvejaxcorral)) {
+            for (Criaxestadoxparto criaxestadoxpartoCollectionOldCriaxestadoxparto : criaxestadoxpartoCollectionOld) {
+                if (!criaxestadoxpartoCollectionNew.contains(criaxestadoxpartoCollectionOldCriaxestadoxparto)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Ovejaxcorral " + ovejaxcorralCollectionOldOvejaxcorral + " since its oveja field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Criaxestadoxparto " + criaxestadoxpartoCollectionOldCriaxestadoxparto + " since its oveja field is not nullable.");
                 }
             }
-            for (Estadopartoxpartoxoveja estadopartoxpartoxovejaCollectionOldEstadopartoxpartoxoveja : estadopartoxpartoxovejaCollectionOld) {
-                if (!estadopartoxpartoxovejaCollectionNew.contains(estadopartoxpartoxovejaCollectionOldEstadopartoxpartoxoveja)) {
+            for (Madrexestadoxparto madrexestadoxpartoCollectionOldMadrexestadoxparto : madrexestadoxpartoCollectionOld) {
+                if (!madrexestadoxpartoCollectionNew.contains(madrexestadoxpartoCollectionOldMadrexestadoxparto)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Estadopartoxpartoxoveja " + estadopartoxpartoxovejaCollectionOldEstadopartoxpartoxoveja + " since its oveja field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Madrexestadoxparto " + madrexestadoxpartoCollectionOldMadrexestadoxparto + " since its oveja field is not nullable.");
+                }
+            }
+            for (Historialxovejaxcorral historialxovejaxcorralCollectionOldHistorialxovejaxcorral : historialxovejaxcorralCollectionOld) {
+                if (!historialxovejaxcorralCollectionNew.contains(historialxovejaxcorralCollectionOldHistorialxovejaxcorral)) {
+                    if (illegalOrphanMessages == null) {
+                        illegalOrphanMessages = new ArrayList<String>();
+                    }
+                    illegalOrphanMessages.add("You must retain Historialxovejaxcorral " + historialxovejaxcorralCollectionOldHistorialxovejaxcorral + " since its oveja field is not nullable.");
                 }
             }
             for (Servicio servicioCollection1OldServicio : servicioCollection1Old) {
@@ -187,28 +192,27 @@ public class OvejaJpaController {
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            if (partoNew != null) {
-                partoNew = em.getReference(partoNew.getClass(), partoNew.getPartoid());
-                oveja.setParto(partoNew);
+            Collection<Criaxestadoxparto> attachedCriaxestadoxpartoCollectionNew = new ArrayList<Criaxestadoxparto>();
+            for (Criaxestadoxparto criaxestadoxpartoCollectionNewCriaxestadoxpartoToAttach : criaxestadoxpartoCollectionNew) {
+                criaxestadoxpartoCollectionNewCriaxestadoxpartoToAttach = em.getReference(criaxestadoxpartoCollectionNewCriaxestadoxpartoToAttach.getClass(), criaxestadoxpartoCollectionNewCriaxestadoxpartoToAttach.getCriaxestadoxpartoid());
+                attachedCriaxestadoxpartoCollectionNew.add(criaxestadoxpartoCollectionNewCriaxestadoxpartoToAttach);
             }
-            if (majadaNew != null) {
-                majadaNew = em.getReference(majadaNew.getClass(), majadaNew.getMajadaid());
-                oveja.setMajada(majadaNew);
+            criaxestadoxpartoCollectionNew = attachedCriaxestadoxpartoCollectionNew;
+            oveja.setCriaxestadoxpartoCollection(criaxestadoxpartoCollectionNew);
+            Collection<Madrexestadoxparto> attachedMadrexestadoxpartoCollectionNew = new ArrayList<Madrexestadoxparto>();
+            for (Madrexestadoxparto madrexestadoxpartoCollectionNewMadrexestadoxpartoToAttach : madrexestadoxpartoCollectionNew) {
+                madrexestadoxpartoCollectionNewMadrexestadoxpartoToAttach = em.getReference(madrexestadoxpartoCollectionNewMadrexestadoxpartoToAttach.getClass(), madrexestadoxpartoCollectionNewMadrexestadoxpartoToAttach.getMadrexestadoxpartoid());
+                attachedMadrexestadoxpartoCollectionNew.add(madrexestadoxpartoCollectionNewMadrexestadoxpartoToAttach);
             }
-            Collection<Ovejaxcorral> attachedOvejaxcorralCollectionNew = new ArrayList<Ovejaxcorral>();
-            for (Ovejaxcorral ovejaxcorralCollectionNewOvejaxcorralToAttach : ovejaxcorralCollectionNew) {
-                ovejaxcorralCollectionNewOvejaxcorralToAttach = em.getReference(ovejaxcorralCollectionNewOvejaxcorralToAttach.getClass(), ovejaxcorralCollectionNewOvejaxcorralToAttach.getOvejaxcorralid());
-                attachedOvejaxcorralCollectionNew.add(ovejaxcorralCollectionNewOvejaxcorralToAttach);
+            madrexestadoxpartoCollectionNew = attachedMadrexestadoxpartoCollectionNew;
+            oveja.setMadrexestadoxpartoCollection(madrexestadoxpartoCollectionNew);
+            Collection<Historialxovejaxcorral> attachedHistorialxovejaxcorralCollectionNew = new ArrayList<Historialxovejaxcorral>();
+            for (Historialxovejaxcorral historialxovejaxcorralCollectionNewHistorialxovejaxcorralToAttach : historialxovejaxcorralCollectionNew) {
+                historialxovejaxcorralCollectionNewHistorialxovejaxcorralToAttach = em.getReference(historialxovejaxcorralCollectionNewHistorialxovejaxcorralToAttach.getClass(), historialxovejaxcorralCollectionNewHistorialxovejaxcorralToAttach.getHistorialxovejaxcorralid());
+                attachedHistorialxovejaxcorralCollectionNew.add(historialxovejaxcorralCollectionNewHistorialxovejaxcorralToAttach);
             }
-            ovejaxcorralCollectionNew = attachedOvejaxcorralCollectionNew;
-            oveja.setOvejaxcorralCollection(ovejaxcorralCollectionNew);
-            Collection<Estadopartoxpartoxoveja> attachedEstadopartoxpartoxovejaCollectionNew = new ArrayList<Estadopartoxpartoxoveja>();
-            for (Estadopartoxpartoxoveja estadopartoxpartoxovejaCollectionNewEstadopartoxpartoxovejaToAttach : estadopartoxpartoxovejaCollectionNew) {
-                estadopartoxpartoxovejaCollectionNewEstadopartoxpartoxovejaToAttach = em.getReference(estadopartoxpartoxovejaCollectionNewEstadopartoxpartoxovejaToAttach.getClass(), estadopartoxpartoxovejaCollectionNewEstadopartoxpartoxovejaToAttach.getEstadopartoxpartoxovejaid());
-                attachedEstadopartoxpartoxovejaCollectionNew.add(estadopartoxpartoxovejaCollectionNewEstadopartoxpartoxovejaToAttach);
-            }
-            estadopartoxpartoxovejaCollectionNew = attachedEstadopartoxpartoxovejaCollectionNew;
-            oveja.setEstadopartoxpartoxovejaCollection(estadopartoxpartoxovejaCollectionNew);
+            historialxovejaxcorralCollectionNew = attachedHistorialxovejaxcorralCollectionNew;
+            oveja.setHistorialxovejaxcorralCollection(historialxovejaxcorralCollectionNew);
             Collection<Servicio> attachedServicioCollectionNew = new ArrayList<Servicio>();
             for (Servicio servicioCollectionNewServicioToAttach : servicioCollectionNew) {
                 servicioCollectionNewServicioToAttach = em.getReference(servicioCollectionNewServicioToAttach.getClass(), servicioCollectionNewServicioToAttach.getServicioid());
@@ -224,41 +228,36 @@ public class OvejaJpaController {
             servicioCollection1New = attachedServicioCollection1New;
             oveja.setServicioCollection1(servicioCollection1New);
             oveja = em.merge(oveja);
-            if (partoOld != null && !partoOld.equals(partoNew)) {
-                partoOld.getOvejaCollection().remove(oveja);
-                partoOld = em.merge(partoOld);
-            }
-            if (partoNew != null && !partoNew.equals(partoOld)) {
-                partoNew.getOvejaCollection().add(oveja);
-                partoNew = em.merge(partoNew);
-            }
-            if (majadaOld != null && !majadaOld.equals(majadaNew)) {
-                majadaOld.getOvejaCollection().remove(oveja);
-                majadaOld = em.merge(majadaOld);
-            }
-            if (majadaNew != null && !majadaNew.equals(majadaOld)) {
-                majadaNew.getOvejaCollection().add(oveja);
-                majadaNew = em.merge(majadaNew);
-            }
-            for (Ovejaxcorral ovejaxcorralCollectionNewOvejaxcorral : ovejaxcorralCollectionNew) {
-                if (!ovejaxcorralCollectionOld.contains(ovejaxcorralCollectionNewOvejaxcorral)) {
-                    Oveja oldOvejaOfOvejaxcorralCollectionNewOvejaxcorral = ovejaxcorralCollectionNewOvejaxcorral.getOveja();
-                    ovejaxcorralCollectionNewOvejaxcorral.setOveja(oveja);
-                    ovejaxcorralCollectionNewOvejaxcorral = em.merge(ovejaxcorralCollectionNewOvejaxcorral);
-                    if (oldOvejaOfOvejaxcorralCollectionNewOvejaxcorral != null && !oldOvejaOfOvejaxcorralCollectionNewOvejaxcorral.equals(oveja)) {
-                        oldOvejaOfOvejaxcorralCollectionNewOvejaxcorral.getOvejaxcorralCollection().remove(ovejaxcorralCollectionNewOvejaxcorral);
-                        oldOvejaOfOvejaxcorralCollectionNewOvejaxcorral = em.merge(oldOvejaOfOvejaxcorralCollectionNewOvejaxcorral);
+            for (Criaxestadoxparto criaxestadoxpartoCollectionNewCriaxestadoxparto : criaxestadoxpartoCollectionNew) {
+                if (!criaxestadoxpartoCollectionOld.contains(criaxestadoxpartoCollectionNewCriaxestadoxparto)) {
+                    Oveja oldOvejaOfCriaxestadoxpartoCollectionNewCriaxestadoxparto = criaxestadoxpartoCollectionNewCriaxestadoxparto.getOveja();
+                    criaxestadoxpartoCollectionNewCriaxestadoxparto.setOveja(oveja);
+                    criaxestadoxpartoCollectionNewCriaxestadoxparto = em.merge(criaxestadoxpartoCollectionNewCriaxestadoxparto);
+                    if (oldOvejaOfCriaxestadoxpartoCollectionNewCriaxestadoxparto != null && !oldOvejaOfCriaxestadoxpartoCollectionNewCriaxestadoxparto.equals(oveja)) {
+                        oldOvejaOfCriaxestadoxpartoCollectionNewCriaxestadoxparto.getCriaxestadoxpartoCollection().remove(criaxestadoxpartoCollectionNewCriaxestadoxparto);
+                        oldOvejaOfCriaxestadoxpartoCollectionNewCriaxestadoxparto = em.merge(oldOvejaOfCriaxestadoxpartoCollectionNewCriaxestadoxparto);
                     }
                 }
             }
-            for (Estadopartoxpartoxoveja estadopartoxpartoxovejaCollectionNewEstadopartoxpartoxoveja : estadopartoxpartoxovejaCollectionNew) {
-                if (!estadopartoxpartoxovejaCollectionOld.contains(estadopartoxpartoxovejaCollectionNewEstadopartoxpartoxoveja)) {
-                    Oveja oldOvejaOfEstadopartoxpartoxovejaCollectionNewEstadopartoxpartoxoveja = estadopartoxpartoxovejaCollectionNewEstadopartoxpartoxoveja.getOveja();
-                    estadopartoxpartoxovejaCollectionNewEstadopartoxpartoxoveja.setOveja(oveja);
-                    estadopartoxpartoxovejaCollectionNewEstadopartoxpartoxoveja = em.merge(estadopartoxpartoxovejaCollectionNewEstadopartoxpartoxoveja);
-                    if (oldOvejaOfEstadopartoxpartoxovejaCollectionNewEstadopartoxpartoxoveja != null && !oldOvejaOfEstadopartoxpartoxovejaCollectionNewEstadopartoxpartoxoveja.equals(oveja)) {
-                        oldOvejaOfEstadopartoxpartoxovejaCollectionNewEstadopartoxpartoxoveja.getEstadopartoxpartoxovejaCollection().remove(estadopartoxpartoxovejaCollectionNewEstadopartoxpartoxoveja);
-                        oldOvejaOfEstadopartoxpartoxovejaCollectionNewEstadopartoxpartoxoveja = em.merge(oldOvejaOfEstadopartoxpartoxovejaCollectionNewEstadopartoxpartoxoveja);
+            for (Madrexestadoxparto madrexestadoxpartoCollectionNewMadrexestadoxparto : madrexestadoxpartoCollectionNew) {
+                if (!madrexestadoxpartoCollectionOld.contains(madrexestadoxpartoCollectionNewMadrexestadoxparto)) {
+                    Oveja oldOvejaOfMadrexestadoxpartoCollectionNewMadrexestadoxparto = madrexestadoxpartoCollectionNewMadrexestadoxparto.getOveja();
+                    madrexestadoxpartoCollectionNewMadrexestadoxparto.setOveja(oveja);
+                    madrexestadoxpartoCollectionNewMadrexestadoxparto = em.merge(madrexestadoxpartoCollectionNewMadrexestadoxparto);
+                    if (oldOvejaOfMadrexestadoxpartoCollectionNewMadrexestadoxparto != null && !oldOvejaOfMadrexestadoxpartoCollectionNewMadrexestadoxparto.equals(oveja)) {
+                        oldOvejaOfMadrexestadoxpartoCollectionNewMadrexestadoxparto.getMadrexestadoxpartoCollection().remove(madrexestadoxpartoCollectionNewMadrexestadoxparto);
+                        oldOvejaOfMadrexestadoxpartoCollectionNewMadrexestadoxparto = em.merge(oldOvejaOfMadrexestadoxpartoCollectionNewMadrexestadoxparto);
+                    }
+                }
+            }
+            for (Historialxovejaxcorral historialxovejaxcorralCollectionNewHistorialxovejaxcorral : historialxovejaxcorralCollectionNew) {
+                if (!historialxovejaxcorralCollectionOld.contains(historialxovejaxcorralCollectionNewHistorialxovejaxcorral)) {
+                    Oveja oldOvejaOfHistorialxovejaxcorralCollectionNewHistorialxovejaxcorral = historialxovejaxcorralCollectionNewHistorialxovejaxcorral.getOveja();
+                    historialxovejaxcorralCollectionNewHistorialxovejaxcorral.setOveja(oveja);
+                    historialxovejaxcorralCollectionNewHistorialxovejaxcorral = em.merge(historialxovejaxcorralCollectionNewHistorialxovejaxcorral);
+                    if (oldOvejaOfHistorialxovejaxcorralCollectionNewHistorialxovejaxcorral != null && !oldOvejaOfHistorialxovejaxcorralCollectionNewHistorialxovejaxcorral.equals(oveja)) {
+                        oldOvejaOfHistorialxovejaxcorralCollectionNewHistorialxovejaxcorral.getHistorialxovejaxcorralCollection().remove(historialxovejaxcorralCollectionNewHistorialxovejaxcorral);
+                        oldOvejaOfHistorialxovejaxcorralCollectionNewHistorialxovejaxcorral = em.merge(oldOvejaOfHistorialxovejaxcorralCollectionNewHistorialxovejaxcorral);
                     }
                 }
             }
@@ -320,19 +319,26 @@ public class OvejaJpaController {
                 throw new NonexistentEntityException("The oveja with id " + id + " no longer exists.", enfe);
             }
             List<String> illegalOrphanMessages = null;
-            Collection<Ovejaxcorral> ovejaxcorralCollectionOrphanCheck = oveja.getOvejaxcorralCollection();
-            for (Ovejaxcorral ovejaxcorralCollectionOrphanCheckOvejaxcorral : ovejaxcorralCollectionOrphanCheck) {
+            Collection<Criaxestadoxparto> criaxestadoxpartoCollectionOrphanCheck = oveja.getCriaxestadoxpartoCollection();
+            for (Criaxestadoxparto criaxestadoxpartoCollectionOrphanCheckCriaxestadoxparto : criaxestadoxpartoCollectionOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Oveja (" + oveja + ") cannot be destroyed since the Ovejaxcorral " + ovejaxcorralCollectionOrphanCheckOvejaxcorral + " in its ovejaxcorralCollection field has a non-nullable oveja field.");
+                illegalOrphanMessages.add("This Oveja (" + oveja + ") cannot be destroyed since the Criaxestadoxparto " + criaxestadoxpartoCollectionOrphanCheckCriaxestadoxparto + " in its criaxestadoxpartoCollection field has a non-nullable oveja field.");
             }
-            Collection<Estadopartoxpartoxoveja> estadopartoxpartoxovejaCollectionOrphanCheck = oveja.getEstadopartoxpartoxovejaCollection();
-            for (Estadopartoxpartoxoveja estadopartoxpartoxovejaCollectionOrphanCheckEstadopartoxpartoxoveja : estadopartoxpartoxovejaCollectionOrphanCheck) {
+            Collection<Madrexestadoxparto> madrexestadoxpartoCollectionOrphanCheck = oveja.getMadrexestadoxpartoCollection();
+            for (Madrexestadoxparto madrexestadoxpartoCollectionOrphanCheckMadrexestadoxparto : madrexestadoxpartoCollectionOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Oveja (" + oveja + ") cannot be destroyed since the Estadopartoxpartoxoveja " + estadopartoxpartoxovejaCollectionOrphanCheckEstadopartoxpartoxoveja + " in its estadopartoxpartoxovejaCollection field has a non-nullable oveja field.");
+                illegalOrphanMessages.add("This Oveja (" + oveja + ") cannot be destroyed since the Madrexestadoxparto " + madrexestadoxpartoCollectionOrphanCheckMadrexestadoxparto + " in its madrexestadoxpartoCollection field has a non-nullable oveja field.");
+            }
+            Collection<Historialxovejaxcorral> historialxovejaxcorralCollectionOrphanCheck = oveja.getHistorialxovejaxcorralCollection();
+            for (Historialxovejaxcorral historialxovejaxcorralCollectionOrphanCheckHistorialxovejaxcorral : historialxovejaxcorralCollectionOrphanCheck) {
+                if (illegalOrphanMessages == null) {
+                    illegalOrphanMessages = new ArrayList<String>();
+                }
+                illegalOrphanMessages.add("This Oveja (" + oveja + ") cannot be destroyed since the Historialxovejaxcorral " + historialxovejaxcorralCollectionOrphanCheckHistorialxovejaxcorral + " in its historialxovejaxcorralCollection field has a non-nullable oveja field.");
             }
             Collection<Servicio> servicioCollection1OrphanCheck = oveja.getServicioCollection1();
             for (Servicio servicioCollection1OrphanCheckServicio : servicioCollection1OrphanCheck) {
@@ -343,16 +349,6 @@ public class OvejaJpaController {
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
-            }
-            Parto parto = oveja.getParto();
-            if (parto != null) {
-                parto.getOvejaCollection().remove(oveja);
-                parto = em.merge(parto);
-            }
-            Majada majada = oveja.getMajada();
-            if (majada != null) {
-                majada.getOvejaCollection().remove(oveja);
-                majada = em.merge(majada);
             }
             Collection<Servicio> servicioCollection = oveja.getServicioCollection();
             for (Servicio servicioCollectionServicio : servicioCollection) {
@@ -389,6 +385,18 @@ public class OvejaJpaController {
             em.close();
         }
     }
+
+    public List<Oveja> findListaOvejaPorCorral(Integer corralid) {
+        EntityManager em = getEntityManager();
+        try{
+            Query q  = em.createQuery("select object(o) from Oveja as o where corralid = " + corralid);
+
+            return q.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
 
     public Oveja findOveja(Integer id) {
         EntityManager em = getEntityManager();

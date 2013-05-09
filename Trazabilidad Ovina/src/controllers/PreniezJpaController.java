@@ -5,7 +5,6 @@
 
 package controllers;
 
-import controllers.exceptions.IllegalOrphanException;
 import controllers.exceptions.NonexistentEntityException;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -26,7 +25,7 @@ import java.util.Collection;
 public class PreniezJpaController {
 
     public PreniezJpaController() {
-        emf = Persistence.createEntityManagerFactory("Trazabilidad_OvinaPU");
+        emf = Persistence.createEntityManagerFactory("REEMPLAZARPU");
     }
     private EntityManagerFactory emf = null;
 
@@ -75,7 +74,7 @@ public class PreniezJpaController {
         }
     }
 
-    public void edit(Preniez preniez) throws IllegalOrphanException, NonexistentEntityException, Exception {
+    public void edit(Preniez preniez) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -85,18 +84,6 @@ public class PreniezJpaController {
             Servicio servicioNew = preniez.getServicio();
             Collection<Parto> partoCollectionOld = persistentPreniez.getPartoCollection();
             Collection<Parto> partoCollectionNew = preniez.getPartoCollection();
-            List<String> illegalOrphanMessages = null;
-            for (Parto partoCollectionOldParto : partoCollectionOld) {
-                if (!partoCollectionNew.contains(partoCollectionOldParto)) {
-                    if (illegalOrphanMessages == null) {
-                        illegalOrphanMessages = new ArrayList<String>();
-                    }
-                    illegalOrphanMessages.add("You must retain Parto " + partoCollectionOldParto + " since its preniez field is not nullable.");
-                }
-            }
-            if (illegalOrphanMessages != null) {
-                throw new IllegalOrphanException(illegalOrphanMessages);
-            }
             if (servicioNew != null) {
                 servicioNew = em.getReference(servicioNew.getClass(), servicioNew.getServicioid());
                 preniez.setServicio(servicioNew);
@@ -116,6 +103,12 @@ public class PreniezJpaController {
             if (servicioNew != null && !servicioNew.equals(servicioOld)) {
                 servicioNew.getPreniezCollection().add(preniez);
                 servicioNew = em.merge(servicioNew);
+            }
+            for (Parto partoCollectionOldParto : partoCollectionOld) {
+                if (!partoCollectionNew.contains(partoCollectionOldParto)) {
+                    partoCollectionOldParto.setPreniez(null);
+                    partoCollectionOldParto = em.merge(partoCollectionOldParto);
+                }
             }
             for (Parto partoCollectionNewParto : partoCollectionNew) {
                 if (!partoCollectionOld.contains(partoCollectionNewParto)) {
@@ -145,7 +138,7 @@ public class PreniezJpaController {
         }
     }
 
-    public void destroy(Integer id) throws IllegalOrphanException, NonexistentEntityException {
+    public void destroy(Integer id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -157,21 +150,15 @@ public class PreniezJpaController {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The preniez with id " + id + " no longer exists.", enfe);
             }
-            List<String> illegalOrphanMessages = null;
-            Collection<Parto> partoCollectionOrphanCheck = preniez.getPartoCollection();
-            for (Parto partoCollectionOrphanCheckParto : partoCollectionOrphanCheck) {
-                if (illegalOrphanMessages == null) {
-                    illegalOrphanMessages = new ArrayList<String>();
-                }
-                illegalOrphanMessages.add("This Preniez (" + preniez + ") cannot be destroyed since the Parto " + partoCollectionOrphanCheckParto + " in its partoCollection field has a non-nullable preniez field.");
-            }
-            if (illegalOrphanMessages != null) {
-                throw new IllegalOrphanException(illegalOrphanMessages);
-            }
             Servicio servicio = preniez.getServicio();
             if (servicio != null) {
                 servicio.getPreniezCollection().remove(preniez);
                 servicio = em.merge(servicio);
+            }
+            Collection<Parto> partoCollection = preniez.getPartoCollection();
+            for (Parto partoCollectionParto : partoCollection) {
+                partoCollectionParto.setPreniez(null);
+                partoCollectionParto = em.merge(partoCollectionParto);
             }
             em.remove(preniez);
             em.getTransaction().commit();

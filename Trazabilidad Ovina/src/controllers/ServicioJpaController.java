@@ -25,7 +25,7 @@ import model.Servicio;
 public class ServicioJpaController {
 
     public ServicioJpaController() {
-        emf = Persistence.createEntityManagerFactory("Trazabilidad_OvinaPU");
+        emf = Persistence.createEntityManagerFactory("REEMPLAZARPU");
     }
     private EntityManagerFactory emf = null;
 
