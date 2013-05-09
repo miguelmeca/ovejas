@@ -12,18 +12,18 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import model.Historialxovejaxcorral;
 import model.Oveja;
 import model.Corral;
-import model.Ovejaxcorral;
 
 /**
  *
  * @author laura
  */
-public class OvejaxcorralJpaController {
+public class HistorialxovejaxcorralJpaController {
 
-    public OvejaxcorralJpaController() {
-        emf = Persistence.createEntityManagerFactory("Trazabilidad_OvinaPU");
+    public HistorialxovejaxcorralJpaController() {
+        emf = Persistence.createEntityManagerFactory("REEMPLAZARPU");
     }
     private EntityManagerFactory emf = null;
 
@@ -31,28 +31,28 @@ public class OvejaxcorralJpaController {
         return emf.createEntityManager();
     }
 
-    public void create(Ovejaxcorral ovejaxcorral) {
+    public void create(Historialxovejaxcorral historialxovejaxcorral) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Oveja oveja = ovejaxcorral.getOveja();
+            Oveja oveja = historialxovejaxcorral.getOveja();
             if (oveja != null) {
                 oveja = em.getReference(oveja.getClass(), oveja.getOvejaid());
-                ovejaxcorral.setOveja(oveja);
+                historialxovejaxcorral.setOveja(oveja);
             }
-            Corral corral = ovejaxcorral.getCorral();
+            Corral corral = historialxovejaxcorral.getCorral();
             if (corral != null) {
                 corral = em.getReference(corral.getClass(), corral.getCorralid());
-                ovejaxcorral.setCorral(corral);
+                historialxovejaxcorral.setCorral(corral);
             }
-            em.persist(ovejaxcorral);
+            em.persist(historialxovejaxcorral);
             if (oveja != null) {
-                oveja.getOvejaxcorralCollection().add(ovejaxcorral);
+                oveja.getHistorialxovejaxcorralCollection().add(historialxovejaxcorral);
                 oveja = em.merge(oveja);
             }
             if (corral != null) {
-                corral.getOvejaxcorralCollection().add(ovejaxcorral);
+                corral.getHistorialxovejaxcorralCollection().add(historialxovejaxcorral);
                 corral = em.merge(corral);
             }
             em.getTransaction().commit();
@@ -63,48 +63,48 @@ public class OvejaxcorralJpaController {
         }
     }
 
-    public void edit(Ovejaxcorral ovejaxcorral) throws NonexistentEntityException, Exception {
+    public void edit(Historialxovejaxcorral historialxovejaxcorral) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Ovejaxcorral persistentOvejaxcorral = em.find(Ovejaxcorral.class, ovejaxcorral.getOvejaxcorralid());
-            Oveja ovejaOld = persistentOvejaxcorral.getOveja();
-            Oveja ovejaNew = ovejaxcorral.getOveja();
-            Corral corralOld = persistentOvejaxcorral.getCorral();
-            Corral corralNew = ovejaxcorral.getCorral();
+            Historialxovejaxcorral persistentHistorialxovejaxcorral = em.find(Historialxovejaxcorral.class, historialxovejaxcorral.getHistorialxovejaxcorralid());
+            Oveja ovejaOld = persistentHistorialxovejaxcorral.getOveja();
+            Oveja ovejaNew = historialxovejaxcorral.getOveja();
+            Corral corralOld = persistentHistorialxovejaxcorral.getCorral();
+            Corral corralNew = historialxovejaxcorral.getCorral();
             if (ovejaNew != null) {
                 ovejaNew = em.getReference(ovejaNew.getClass(), ovejaNew.getOvejaid());
-                ovejaxcorral.setOveja(ovejaNew);
+                historialxovejaxcorral.setOveja(ovejaNew);
             }
             if (corralNew != null) {
                 corralNew = em.getReference(corralNew.getClass(), corralNew.getCorralid());
-                ovejaxcorral.setCorral(corralNew);
+                historialxovejaxcorral.setCorral(corralNew);
             }
-            ovejaxcorral = em.merge(ovejaxcorral);
+            historialxovejaxcorral = em.merge(historialxovejaxcorral);
             if (ovejaOld != null && !ovejaOld.equals(ovejaNew)) {
-                ovejaOld.getOvejaxcorralCollection().remove(ovejaxcorral);
+                ovejaOld.getHistorialxovejaxcorralCollection().remove(historialxovejaxcorral);
                 ovejaOld = em.merge(ovejaOld);
             }
             if (ovejaNew != null && !ovejaNew.equals(ovejaOld)) {
-                ovejaNew.getOvejaxcorralCollection().add(ovejaxcorral);
+                ovejaNew.getHistorialxovejaxcorralCollection().add(historialxovejaxcorral);
                 ovejaNew = em.merge(ovejaNew);
             }
             if (corralOld != null && !corralOld.equals(corralNew)) {
-                corralOld.getOvejaxcorralCollection().remove(ovejaxcorral);
+                corralOld.getHistorialxovejaxcorralCollection().remove(historialxovejaxcorral);
                 corralOld = em.merge(corralOld);
             }
             if (corralNew != null && !corralNew.equals(corralOld)) {
-                corralNew.getOvejaxcorralCollection().add(ovejaxcorral);
+                corralNew.getHistorialxovejaxcorralCollection().add(historialxovejaxcorral);
                 corralNew = em.merge(corralNew);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = ovejaxcorral.getOvejaxcorralid();
-                if (findOvejaxcorral(id) == null) {
-                    throw new NonexistentEntityException("The ovejaxcorral with id " + id + " no longer exists.");
+                Integer id = historialxovejaxcorral.getHistorialxovejaxcorralid();
+                if (findHistorialxovejaxcorral(id) == null) {
+                    throw new NonexistentEntityException("The historialxovejaxcorral with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -120,24 +120,24 @@ public class OvejaxcorralJpaController {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Ovejaxcorral ovejaxcorral;
+            Historialxovejaxcorral historialxovejaxcorral;
             try {
-                ovejaxcorral = em.getReference(Ovejaxcorral.class, id);
-                ovejaxcorral.getOvejaxcorralid();
+                historialxovejaxcorral = em.getReference(Historialxovejaxcorral.class, id);
+                historialxovejaxcorral.getHistorialxovejaxcorralid();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The ovejaxcorral with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The historialxovejaxcorral with id " + id + " no longer exists.", enfe);
             }
-            Oveja oveja = ovejaxcorral.getOveja();
+            Oveja oveja = historialxovejaxcorral.getOveja();
             if (oveja != null) {
-                oveja.getOvejaxcorralCollection().remove(ovejaxcorral);
+                oveja.getHistorialxovejaxcorralCollection().remove(historialxovejaxcorral);
                 oveja = em.merge(oveja);
             }
-            Corral corral = ovejaxcorral.getCorral();
+            Corral corral = historialxovejaxcorral.getCorral();
             if (corral != null) {
-                corral.getOvejaxcorralCollection().remove(ovejaxcorral);
+                corral.getHistorialxovejaxcorralCollection().remove(historialxovejaxcorral);
                 corral = em.merge(corral);
             }
-            em.remove(ovejaxcorral);
+            em.remove(historialxovejaxcorral);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -146,18 +146,18 @@ public class OvejaxcorralJpaController {
         }
     }
 
-    public List<Ovejaxcorral> findOvejaxcorralEntities() {
-        return findOvejaxcorralEntities(true, -1, -1);
+    public List<Historialxovejaxcorral> findHistorialxovejaxcorralEntities() {
+        return findHistorialxovejaxcorralEntities(true, -1, -1);
     }
 
-    public List<Ovejaxcorral> findOvejaxcorralEntities(int maxResults, int firstResult) {
-        return findOvejaxcorralEntities(false, maxResults, firstResult);
+    public List<Historialxovejaxcorral> findHistorialxovejaxcorralEntities(int maxResults, int firstResult) {
+        return findHistorialxovejaxcorralEntities(false, maxResults, firstResult);
     }
 
-    private List<Ovejaxcorral> findOvejaxcorralEntities(boolean all, int maxResults, int firstResult) {
+    private List<Historialxovejaxcorral> findHistorialxovejaxcorralEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
-            Query q = em.createQuery("select object(o) from Ovejaxcorral as o");
+            Query q = em.createQuery("select object(o) from Historialxovejaxcorral as o");
             if (!all) {
                 q.setMaxResults(maxResults);
                 q.setFirstResult(firstResult);
@@ -168,19 +168,19 @@ public class OvejaxcorralJpaController {
         }
     }
 
-    public Ovejaxcorral findOvejaxcorral(Integer id) {
+    public Historialxovejaxcorral findHistorialxovejaxcorral(Integer id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Ovejaxcorral.class, id);
+            return em.find(Historialxovejaxcorral.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getOvejaxcorralCount() {
+    public int getHistorialxovejaxcorralCount() {
         EntityManager em = getEntityManager();
         try {
-            Query q = em.createQuery("select count(o) from Ovejaxcorral as o");
+            Query q = em.createQuery("select count(o) from Historialxovejaxcorral as o");
             return ((Long) q.getSingleResult()).intValue();
         } finally {
             em.close();

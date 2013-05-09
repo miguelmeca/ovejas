@@ -14,7 +14,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import model.Corral;
-import model.Ovejaxcorral;
+import model.Historialxovejaxcorral;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -25,7 +25,7 @@ import java.util.Collection;
 public class CorralJpaController {
 
     public CorralJpaController() {
-        emf = Persistence.createEntityManagerFactory("Trazabilidad_OvinaPU");
+        emf = Persistence.createEntityManagerFactory("REEMPLAZARPU");
     }
     private EntityManagerFactory emf = null;
 
@@ -34,27 +34,27 @@ public class CorralJpaController {
     }
 
     public void create(Corral corral) {
-        if (corral.getOvejaxcorralCollection() == null) {
-            corral.setOvejaxcorralCollection(new ArrayList<Ovejaxcorral>());
+        if (corral.getHistorialxovejaxcorralCollection() == null) {
+            corral.setHistorialxovejaxcorralCollection(new ArrayList<Historialxovejaxcorral>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Collection<Ovejaxcorral> attachedOvejaxcorralCollection = new ArrayList<Ovejaxcorral>();
-            for (Ovejaxcorral ovejaxcorralCollectionOvejaxcorralToAttach : corral.getOvejaxcorralCollection()) {
-                ovejaxcorralCollectionOvejaxcorralToAttach = em.getReference(ovejaxcorralCollectionOvejaxcorralToAttach.getClass(), ovejaxcorralCollectionOvejaxcorralToAttach.getOvejaxcorralid());
-                attachedOvejaxcorralCollection.add(ovejaxcorralCollectionOvejaxcorralToAttach);
+            Collection<Historialxovejaxcorral> attachedHistorialxovejaxcorralCollection = new ArrayList<Historialxovejaxcorral>();
+            for (Historialxovejaxcorral historialxovejaxcorralCollectionHistorialxovejaxcorralToAttach : corral.getHistorialxovejaxcorralCollection()) {
+                historialxovejaxcorralCollectionHistorialxovejaxcorralToAttach = em.getReference(historialxovejaxcorralCollectionHistorialxovejaxcorralToAttach.getClass(), historialxovejaxcorralCollectionHistorialxovejaxcorralToAttach.getHistorialxovejaxcorralid());
+                attachedHistorialxovejaxcorralCollection.add(historialxovejaxcorralCollectionHistorialxovejaxcorralToAttach);
             }
-            corral.setOvejaxcorralCollection(attachedOvejaxcorralCollection);
+            corral.setHistorialxovejaxcorralCollection(attachedHistorialxovejaxcorralCollection);
             em.persist(corral);
-            for (Ovejaxcorral ovejaxcorralCollectionOvejaxcorral : corral.getOvejaxcorralCollection()) {
-                Corral oldCorralOfOvejaxcorralCollectionOvejaxcorral = ovejaxcorralCollectionOvejaxcorral.getCorral();
-                ovejaxcorralCollectionOvejaxcorral.setCorral(corral);
-                ovejaxcorralCollectionOvejaxcorral = em.merge(ovejaxcorralCollectionOvejaxcorral);
-                if (oldCorralOfOvejaxcorralCollectionOvejaxcorral != null) {
-                    oldCorralOfOvejaxcorralCollectionOvejaxcorral.getOvejaxcorralCollection().remove(ovejaxcorralCollectionOvejaxcorral);
-                    oldCorralOfOvejaxcorralCollectionOvejaxcorral = em.merge(oldCorralOfOvejaxcorralCollectionOvejaxcorral);
+            for (Historialxovejaxcorral historialxovejaxcorralCollectionHistorialxovejaxcorral : corral.getHistorialxovejaxcorralCollection()) {
+                Corral oldCorralOfHistorialxovejaxcorralCollectionHistorialxovejaxcorral = historialxovejaxcorralCollectionHistorialxovejaxcorral.getCorral();
+                historialxovejaxcorralCollectionHistorialxovejaxcorral.setCorral(corral);
+                historialxovejaxcorralCollectionHistorialxovejaxcorral = em.merge(historialxovejaxcorralCollectionHistorialxovejaxcorral);
+                if (oldCorralOfHistorialxovejaxcorralCollectionHistorialxovejaxcorral != null) {
+                    oldCorralOfHistorialxovejaxcorralCollectionHistorialxovejaxcorral.getHistorialxovejaxcorralCollection().remove(historialxovejaxcorralCollectionHistorialxovejaxcorral);
+                    oldCorralOfHistorialxovejaxcorralCollectionHistorialxovejaxcorral = em.merge(oldCorralOfHistorialxovejaxcorralCollectionHistorialxovejaxcorral);
                 }
             }
             em.getTransaction().commit();
@@ -71,36 +71,36 @@ public class CorralJpaController {
             em = getEntityManager();
             em.getTransaction().begin();
             Corral persistentCorral = em.find(Corral.class, corral.getCorralid());
-            Collection<Ovejaxcorral> ovejaxcorralCollectionOld = persistentCorral.getOvejaxcorralCollection();
-            Collection<Ovejaxcorral> ovejaxcorralCollectionNew = corral.getOvejaxcorralCollection();
+            Collection<Historialxovejaxcorral> historialxovejaxcorralCollectionOld = persistentCorral.getHistorialxovejaxcorralCollection();
+            Collection<Historialxovejaxcorral> historialxovejaxcorralCollectionNew = corral.getHistorialxovejaxcorralCollection();
             List<String> illegalOrphanMessages = null;
-            for (Ovejaxcorral ovejaxcorralCollectionOldOvejaxcorral : ovejaxcorralCollectionOld) {
-                if (!ovejaxcorralCollectionNew.contains(ovejaxcorralCollectionOldOvejaxcorral)) {
+            for (Historialxovejaxcorral historialxovejaxcorralCollectionOldHistorialxovejaxcorral : historialxovejaxcorralCollectionOld) {
+                if (!historialxovejaxcorralCollectionNew.contains(historialxovejaxcorralCollectionOldHistorialxovejaxcorral)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Ovejaxcorral " + ovejaxcorralCollectionOldOvejaxcorral + " since its corral field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Historialxovejaxcorral " + historialxovejaxcorralCollectionOldHistorialxovejaxcorral + " since its corral field is not nullable.");
                 }
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            Collection<Ovejaxcorral> attachedOvejaxcorralCollectionNew = new ArrayList<Ovejaxcorral>();
-            for (Ovejaxcorral ovejaxcorralCollectionNewOvejaxcorralToAttach : ovejaxcorralCollectionNew) {
-                ovejaxcorralCollectionNewOvejaxcorralToAttach = em.getReference(ovejaxcorralCollectionNewOvejaxcorralToAttach.getClass(), ovejaxcorralCollectionNewOvejaxcorralToAttach.getOvejaxcorralid());
-                attachedOvejaxcorralCollectionNew.add(ovejaxcorralCollectionNewOvejaxcorralToAttach);
+            Collection<Historialxovejaxcorral> attachedHistorialxovejaxcorralCollectionNew = new ArrayList<Historialxovejaxcorral>();
+            for (Historialxovejaxcorral historialxovejaxcorralCollectionNewHistorialxovejaxcorralToAttach : historialxovejaxcorralCollectionNew) {
+                historialxovejaxcorralCollectionNewHistorialxovejaxcorralToAttach = em.getReference(historialxovejaxcorralCollectionNewHistorialxovejaxcorralToAttach.getClass(), historialxovejaxcorralCollectionNewHistorialxovejaxcorralToAttach.getHistorialxovejaxcorralid());
+                attachedHistorialxovejaxcorralCollectionNew.add(historialxovejaxcorralCollectionNewHistorialxovejaxcorralToAttach);
             }
-            ovejaxcorralCollectionNew = attachedOvejaxcorralCollectionNew;
-            corral.setOvejaxcorralCollection(ovejaxcorralCollectionNew);
+            historialxovejaxcorralCollectionNew = attachedHistorialxovejaxcorralCollectionNew;
+            corral.setHistorialxovejaxcorralCollection(historialxovejaxcorralCollectionNew);
             corral = em.merge(corral);
-            for (Ovejaxcorral ovejaxcorralCollectionNewOvejaxcorral : ovejaxcorralCollectionNew) {
-                if (!ovejaxcorralCollectionOld.contains(ovejaxcorralCollectionNewOvejaxcorral)) {
-                    Corral oldCorralOfOvejaxcorralCollectionNewOvejaxcorral = ovejaxcorralCollectionNewOvejaxcorral.getCorral();
-                    ovejaxcorralCollectionNewOvejaxcorral.setCorral(corral);
-                    ovejaxcorralCollectionNewOvejaxcorral = em.merge(ovejaxcorralCollectionNewOvejaxcorral);
-                    if (oldCorralOfOvejaxcorralCollectionNewOvejaxcorral != null && !oldCorralOfOvejaxcorralCollectionNewOvejaxcorral.equals(corral)) {
-                        oldCorralOfOvejaxcorralCollectionNewOvejaxcorral.getOvejaxcorralCollection().remove(ovejaxcorralCollectionNewOvejaxcorral);
-                        oldCorralOfOvejaxcorralCollectionNewOvejaxcorral = em.merge(oldCorralOfOvejaxcorralCollectionNewOvejaxcorral);
+            for (Historialxovejaxcorral historialxovejaxcorralCollectionNewHistorialxovejaxcorral : historialxovejaxcorralCollectionNew) {
+                if (!historialxovejaxcorralCollectionOld.contains(historialxovejaxcorralCollectionNewHistorialxovejaxcorral)) {
+                    Corral oldCorralOfHistorialxovejaxcorralCollectionNewHistorialxovejaxcorral = historialxovejaxcorralCollectionNewHistorialxovejaxcorral.getCorral();
+                    historialxovejaxcorralCollectionNewHistorialxovejaxcorral.setCorral(corral);
+                    historialxovejaxcorralCollectionNewHistorialxovejaxcorral = em.merge(historialxovejaxcorralCollectionNewHistorialxovejaxcorral);
+                    if (oldCorralOfHistorialxovejaxcorralCollectionNewHistorialxovejaxcorral != null && !oldCorralOfHistorialxovejaxcorralCollectionNewHistorialxovejaxcorral.equals(corral)) {
+                        oldCorralOfHistorialxovejaxcorralCollectionNewHistorialxovejaxcorral.getHistorialxovejaxcorralCollection().remove(historialxovejaxcorralCollectionNewHistorialxovejaxcorral);
+                        oldCorralOfHistorialxovejaxcorralCollectionNewHistorialxovejaxcorral = em.merge(oldCorralOfHistorialxovejaxcorralCollectionNewHistorialxovejaxcorral);
                     }
                 }
             }
@@ -134,12 +134,12 @@ public class CorralJpaController {
                 throw new NonexistentEntityException("The corral with id " + id + " no longer exists.", enfe);
             }
             List<String> illegalOrphanMessages = null;
-            Collection<Ovejaxcorral> ovejaxcorralCollectionOrphanCheck = corral.getOvejaxcorralCollection();
-            for (Ovejaxcorral ovejaxcorralCollectionOrphanCheckOvejaxcorral : ovejaxcorralCollectionOrphanCheck) {
+            Collection<Historialxovejaxcorral> historialxovejaxcorralCollectionOrphanCheck = corral.getHistorialxovejaxcorralCollection();
+            for (Historialxovejaxcorral historialxovejaxcorralCollectionOrphanCheckHistorialxovejaxcorral : historialxovejaxcorralCollectionOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Corral (" + corral + ") cannot be destroyed since the Ovejaxcorral " + ovejaxcorralCollectionOrphanCheckOvejaxcorral + " in its ovejaxcorralCollection field has a non-nullable corral field.");
+                illegalOrphanMessages.add("This Corral (" + corral + ") cannot be destroyed since the Historialxovejaxcorral " + historialxovejaxcorralCollectionOrphanCheckHistorialxovejaxcorral + " in its historialxovejaxcorralCollection field has a non-nullable corral field.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);

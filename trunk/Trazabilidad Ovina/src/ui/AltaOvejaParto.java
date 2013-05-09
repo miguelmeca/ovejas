@@ -4,12 +4,12 @@
 
 package ui;
 
-import controllers.EstadopartoJpaController;
+
+import controllers.EstadoJpaController;
 import controllers.MajadaJpaController;
 import java.util.List;
-import model.Estadoparto;
+import model.Estado;
 import model.Majada;
-//import org.hibernate.Hibernate;
 
 public class AltaOvejaParto extends javax.swing.JPanel {
 
@@ -19,14 +19,14 @@ public class AltaOvejaParto extends javax.swing.JPanel {
         this.label1.setSize(60,20);
         //iniiciando componetes desde la base de datos
 
-        EstadopartoJpaController estadopartoJpaController = new EstadopartoJpaController();
-        List<Estadoparto> e = estadopartoJpaController.findEstadopartoEntities();
+        EstadoJpaController cjc = new EstadoJpaController();
+        List<Estado> e = cjc.findEstadoEntities();
         for(int i = 0; i < e.size(); i++){
-            this.estadoMadreChoice.add(e.get(i).getEstadodescripcion());
+            this.estadoCriaChoice.add(e.get(i).getEstadonombre());
         }
 
         for(int i = 0; i < e.size(); i++){
-            this.estadoCriaChoice.add(e.get(i).getEstadodescripcion());
+            this.estadoMadreChoice.add(e.get(i).getEstadonombre());
         }
         
         MajadaJpaController majadaJpaController = new MajadaJpaController();

@@ -16,6 +16,7 @@ import controllers.MajadaJpaController;
 import model.Corral;
 import model.Majada;
 
+
 /**
  *
  * @author laura
@@ -76,21 +77,23 @@ public class NewJFrame extends javax.swing.JFrame {
 //       MajadaJpaController majadaJpaController = new MajadaJpaController();
 //       majadaJpaController.create(majada);
 
-        CorralJpaController corralJpaController = new CorralJpaController();
+//        CorralJpaController corralJpaController = new CorralJpaController();
+//
+//        Corral corral = new Corral();
+//        corral.setCorralnombre("Corral1");
+//        corral.setCorraldescripcion("Primer Corral");
+//        corral.setCorralcapacidad(5);
+//
+//        Corral corral1 = new Corral();
+//        corral1.setCorralnombre("Corral2");
+//        corral1.setCorraldescripcion("Segundo Corral");
+//        corral1.setCorralcapacidad(6);
+//
+//
+//        corralJpaController.create(corral);
+//        corralJpaController.create(corral1);
 
-        Corral corral = new Corral();
-        corral.setCorralnombre("Corral1");
-        corral.setCorraldescripcion("Primer Corral");
-        corral.setCorralcapacidad(5);
 
-        Corral corral1 = new Corral();
-        corral1.setCorralnombre("Corral2");
-        corral1.setCorraldescripcion("Segundo Corral");
-        corral1.setCorralcapacidad(6);
-
-
-        corralJpaController.create(corral);
-        corralJpaController.create(corral1);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -107,5 +110,5 @@ public class NewJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
-
+public static javax.swing.JPanel contenidoCentral;
 }

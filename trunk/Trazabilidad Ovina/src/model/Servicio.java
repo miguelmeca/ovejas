@@ -47,10 +47,10 @@ public class Servicio implements Serializable {
     private Date serviciofecha;
     @Column(name = "SERVICIOEXITO")
     private Serializable servicioexito;
-    @JoinColumn(name = "OVEJAMACHOID", referencedColumnName = "OVEJAID")
+    @JoinColumn(name = "OVEJAPADREID", referencedColumnName = "OVEJAID")
     @ManyToOne
     private Oveja oveja;
-    @JoinColumn(name = "OVEJAHEMBRAID", referencedColumnName = "OVEJAID")
+    @JoinColumn(name = "OVEJAMADREID", referencedColumnName = "OVEJAID")
     @ManyToOne(optional = false)
     private Oveja oveja1;
     @OneToMany(mappedBy = "servicio")

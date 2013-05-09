@@ -46,7 +46,7 @@ public class Marco extends javax.swing.JFrame {
             }
         });
 
-         altaCorralesbtn.addActionListener(new java.awt.event.ActionListener() {
+         granjabtn.addActionListener(new java.awt.event.ActionListener() {
 
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AdministrarCorral rsp2 = new AdministrarCorral();
@@ -591,6 +591,12 @@ public class Marco extends javax.swing.JFrame {
         barraVertical.add(altaCorralesbtn);
         barraVertical.add(bajaCorralesbtn);
         barraVertical.add(editarCorralesbtn);
+
+        AdministrarCorral rsp2 = new AdministrarCorral();
+        contenidoCentral.add(rsp2);
+        rsp2.setVisible(true);
+        rsp2.setBounds(0, 0, contenidoCentral.getWidth(), contenidoCentral.getHeight());
+        pack();
     }//GEN-LAST:event_granjabtnActionPerformed
 
     private void administracionbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_administracionbtnActionPerformed

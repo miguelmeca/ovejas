@@ -16,8 +16,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -35,6 +33,8 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Oveja.findAll", query = "SELECT o FROM Oveja o"),
     @NamedQuery(name = "Oveja.findByOvejaid", query = "SELECT o FROM Oveja o WHERE o.ovejaid = :ovejaid"),
     @NamedQuery(name = "Oveja.findByOvejarp", query = "SELECT o FROM Oveja o WHERE o.ovejarp = :ovejarp"),
+    @NamedQuery(name = "Oveja.findByMajadaid", query = "SELECT o FROM Oveja o WHERE o.majadaid = :majadaid"),
+    @NamedQuery(name = "Oveja.findByCorralid", query = "SELECT o FROM Oveja o WHERE o.corralid = :corralid"),
     @NamedQuery(name = "Oveja.findByOvejafechaalta", query = "SELECT o FROM Oveja o WHERE o.ovejafechaalta = :ovejafechaalta"),
     @NamedQuery(name = "Oveja.findByOvejapeso", query = "SELECT o FROM Oveja o WHERE o.ovejapeso = :ovejapeso"),
     @NamedQuery(name = "Oveja.findByOvejasexo", query = "SELECT o FROM Oveja o WHERE o.ovejasexo = :ovejasexo"),
@@ -50,6 +50,12 @@ public class Oveja implements Serializable {
     @Column(name = "OVEJARP")
     private int ovejarp;
     @Basic(optional = false)
+    @Column(name = "MAJADAID")
+    private int majadaid;
+    @Basic(optional = false)
+    @Column(name = "CORRALID")
+    private int corralid;
+    @Basic(optional = false)
     @Column(name = "OVEJAFECHAALTA")
     @Temporal(TemporalType.DATE)
     private Date ovejafechaalta;
@@ -62,19 +68,15 @@ public class Oveja implements Serializable {
     @Column(name = "OVEJAEDADINICIAL")
     private int ovejaedadinicial;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "oveja")
-    private Collection<Ovejaxcorral> ovejaxcorralCollection;
+    private Collection<Criaxestadoxparto> criaxestadoxpartoCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "oveja")
-    private Collection<Estadopartoxpartoxoveja> estadopartoxpartoxovejaCollection;
+    private Collection<Madrexestadoxparto> madrexestadoxpartoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "oveja")
+    private Collection<Historialxovejaxcorral> historialxovejaxcorralCollection;
     @OneToMany(mappedBy = "oveja")
     private Collection<Servicio> servicioCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "oveja1")
     private Collection<Servicio> servicioCollection1;
-    @JoinColumn(name = "PARTOID", referencedColumnName = "PARTOID")
-    @ManyToOne
-    private Parto parto;
-    @JoinColumn(name = "MAJADAID", referencedColumnName = "MAJADAID")
-    @ManyToOne(optional = false)
-    private Majada majada;
 
     public Oveja() {
     }
@@ -83,9 +85,11 @@ public class Oveja implements Serializable {
         this.ovejaid = ovejaid;
     }
 
-    public Oveja(Integer ovejaid, int ovejarp, Date ovejafechaalta, String ovejasexo, int ovejaedadinicial) {
+    public Oveja(Integer ovejaid, int ovejarp, int majadaid, int corralid, Date ovejafechaalta, String ovejasexo, int ovejaedadinicial) {
         this.ovejaid = ovejaid;
         this.ovejarp = ovejarp;
+        this.majadaid = majadaid;
+        this.corralid = corralid;
         this.ovejafechaalta = ovejafechaalta;
         this.ovejasexo = ovejasexo;
         this.ovejaedadinicial = ovejaedadinicial;
@@ -105,6 +109,22 @@ public class Oveja implements Serializable {
 
     public void setOvejarp(int ovejarp) {
         this.ovejarp = ovejarp;
+    }
+
+    public int getMajadaid() {
+        return majadaid;
+    }
+
+    public void setMajadaid(int majadaid) {
+        this.majadaid = majadaid;
+    }
+
+    public int getCorralid() {
+        return corralid;
+    }
+
+    public void setCorralid(int corralid) {
+        this.corralid = corralid;
     }
 
     public Date getOvejafechaalta() {
@@ -139,20 +159,28 @@ public class Oveja implements Serializable {
         this.ovejaedadinicial = ovejaedadinicial;
     }
 
-    public Collection<Ovejaxcorral> getOvejaxcorralCollection() {
-        return ovejaxcorralCollection;
+    public Collection<Criaxestadoxparto> getCriaxestadoxpartoCollection() {
+        return criaxestadoxpartoCollection;
     }
 
-    public void setOvejaxcorralCollection(Collection<Ovejaxcorral> ovejaxcorralCollection) {
-        this.ovejaxcorralCollection = ovejaxcorralCollection;
+    public void setCriaxestadoxpartoCollection(Collection<Criaxestadoxparto> criaxestadoxpartoCollection) {
+        this.criaxestadoxpartoCollection = criaxestadoxpartoCollection;
     }
 
-    public Collection<Estadopartoxpartoxoveja> getEstadopartoxpartoxovejaCollection() {
-        return estadopartoxpartoxovejaCollection;
+    public Collection<Madrexestadoxparto> getMadrexestadoxpartoCollection() {
+        return madrexestadoxpartoCollection;
     }
 
-    public void setEstadopartoxpartoxovejaCollection(Collection<Estadopartoxpartoxoveja> estadopartoxpartoxovejaCollection) {
-        this.estadopartoxpartoxovejaCollection = estadopartoxpartoxovejaCollection;
+    public void setMadrexestadoxpartoCollection(Collection<Madrexestadoxparto> madrexestadoxpartoCollection) {
+        this.madrexestadoxpartoCollection = madrexestadoxpartoCollection;
+    }
+
+    public Collection<Historialxovejaxcorral> getHistorialxovejaxcorralCollection() {
+        return historialxovejaxcorralCollection;
+    }
+
+    public void setHistorialxovejaxcorralCollection(Collection<Historialxovejaxcorral> historialxovejaxcorralCollection) {
+        this.historialxovejaxcorralCollection = historialxovejaxcorralCollection;
     }
 
     public Collection<Servicio> getServicioCollection() {
@@ -169,22 +197,6 @@ public class Oveja implements Serializable {
 
     public void setServicioCollection1(Collection<Servicio> servicioCollection1) {
         this.servicioCollection1 = servicioCollection1;
-    }
-
-    public Parto getParto() {
-        return parto;
-    }
-
-    public void setParto(Parto parto) {
-        this.parto = parto;
-    }
-
-    public Majada getMajada() {
-        return majada;
-    }
-
-    public void setMajada(Majada majada) {
-        this.majada = majada;
     }
 
     @Override
