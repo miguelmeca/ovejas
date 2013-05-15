@@ -49,6 +49,18 @@ public class Marco extends javax.swing.JFrame {
          granjabtn.addActionListener(new java.awt.event.ActionListener() {
 
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                AdministrarCorral rsp2 = new AdministrarCorral();
+//                contenidoCentral.add(rsp2);
+//                rsp2.setVisible(true);
+//                rsp2.setBounds(0, 0, contenidoCentral.getWidth(), contenidoCentral.getHeight());
+                cargarBarraGranja();
+                pack();
+            }
+        });
+
+          btnCorrales.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AdministrarCorral rsp2 = new AdministrarCorral();
                 contenidoCentral.add(rsp2);
                 rsp2.setVisible(true);
@@ -56,7 +68,7 @@ public class Marco extends javax.swing.JFrame {
                 pack();
             }
         });
-
+         
     }
 
     public static JPanel getContenidoCentral() {
@@ -78,42 +90,53 @@ public class Marco extends javax.swing.JFrame {
         barraVertical.setLayout(null);
         barraVertical.setOrientation(1);
         pack();
-        cargarArbol();
-  
+       // cargarArbol();
+       
     }
 
     
-    private void cargarArbol () {
+    private void cargarBarraGranja(){
         
-        DefaultMutableTreeNode granja = new DefaultMutableTreeNode("GRANJA");
-        DefaultTreeModel modelo = new DefaultTreeModel(granja);
-         jTree1 = new JTree(modelo);
+        barraVertical.add(btnCorrales);
+        barraVertical.add(btnMajadas);
+        barraVertical.add(btnInsumos);
         
-        DefaultMutableTreeNode majada = new DefaultMutableTreeNode("Majadas");
-        DefaultMutableTreeNode corral = new DefaultMutableTreeNode("Corrales");
-        DefaultMutableTreeNode animal=new DefaultMutableTreeNode("Animales");
-        DefaultMutableTreeNode admCorrales=new DefaultMutableTreeNode("Administracion Corrales");
-        
-        modelo.insertNodeInto(majada,granja,0);
-        modelo.insertNodeInto(corral, granja, 1);
-        modelo.insertNodeInto(animal, granja, 2);
-        modelo.insertNodeInto(admCorrales, corral, 0);
-        
-        
-        DefaultTreeCellRenderer render= (DefaultTreeCellRenderer)jTree1.getCellRenderer();
-        render.setLeafIcon(new ImageIcon("/ui/imageaaaas.jpg"));
-        render.setOpenIcon(new ImageIcon("/ui/imageaaaas.jpg"));
-        render.setClosedIcon(new ImageIcon("/ui/imageaaaas.jpg"));
-
-         pack();
-        jScrollPane1.setViewportView(jTree1);
-   
-     
-
-           
+        btnCorrales.setBounds(0,   0, barraVertical.getWidth(),50);
+        btnMajadas.setBounds(0,   50, barraVertical.getWidth(),50);
+        btnInsumos.setBounds(0,   100, barraVertical.getWidth(),50);
     }
     
-    
+//    private void cargarArbol () {
+//        
+//        DefaultMutableTreeNode granja = new DefaultMutableTreeNode("GRANJA");
+//        DefaultTreeModel modelo = new DefaultTreeModel(granja);
+//         jTree1 = new JTree(modelo);
+//        
+//        DefaultMutableTreeNode majada = new DefaultMutableTreeNode("Majadas");
+//        DefaultMutableTreeNode corral = new DefaultMutableTreeNode("Corrales");
+//        DefaultMutableTreeNode animal=new DefaultMutableTreeNode("Animales");
+//        DefaultMutableTreeNode admCorrales=new DefaultMutableTreeNode("Administracion Corrales");
+//        
+//        modelo.insertNodeInto(majada,granja,0);
+//        modelo.insertNodeInto(corral, granja, 1);
+//        modelo.insertNodeInto(animal, granja, 2);
+//        modelo.insertNodeInto(admCorrales, corral, 0);
+//        
+//        
+//        DefaultTreeCellRenderer render= (DefaultTreeCellRenderer)jTree1.getCellRenderer();
+//        render.setLeafIcon(new ImageIcon("/ui/imageaaaas.jpg"));
+//        render.setOpenIcon(new ImageIcon("/ui/imageaaaas.jpg"));
+//        render.setClosedIcon(new ImageIcon("/ui/imageaaaas.jpg"));
+//
+//         pack();
+//        jScrollPane1.setViewportView(jTree1);
+//   
+//     
+//
+//           
+//    }
+//    
+//    
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -132,8 +155,6 @@ public class Marco extends javax.swing.JFrame {
         animalbtn = new javax.swing.JButton();
         salir1btn = new javax.swing.JButton();
         barraVertical = new javax.swing.JToolBar();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
         contenidoCentral = new javax.swing.JPanel();
         salir2btn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -295,11 +316,6 @@ public class Marco extends javax.swing.JFrame {
         barraVertical.setRollover(true);
         barraVertical.setAutoscrolls(true);
 
-        jTree1.setName("jTreeMenu");
-        jScrollPane1.setViewportView(jTree1);
-
-        barraVertical.add(jScrollPane1);
-
         contenidoCentral.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         contenidoCentral.setPreferredSize(new java.awt.Dimension(600, 600));
 
@@ -307,7 +323,7 @@ public class Marco extends javax.swing.JFrame {
         contenidoCentral.setLayout(contenidoCentralLayout);
         contenidoCentralLayout.setHorizontalGroup(
             contenidoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGap(0, 597, Short.MAX_VALUE)
         );
         contenidoCentralLayout.setVerticalGroup(
             contenidoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -555,13 +571,13 @@ public class Marco extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(barraHorizontal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(barraHorizontal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(barraVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(contenidoCentral, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
+                            .addComponent(contenidoCentral, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(salir2btn, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)))))
@@ -587,15 +603,16 @@ public class Marco extends javax.swing.JFrame {
     private void granjabtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_granjabtnActionPerformed
         barraVertical.removeAll();
         barraVertical.repaint();
-        barraVertical.add(granajacorralesbtn);
-        barraVertical.add(altaCorralesbtn);
-        barraVertical.add(bajaCorralesbtn);
-        barraVertical.add(editarCorralesbtn);
-
-        AdministrarCorral rsp2 = new AdministrarCorral();
-        contenidoCentral.add(rsp2);
-        rsp2.setVisible(true);
-        rsp2.setBounds(0, 0, contenidoCentral.getWidth(), contenidoCentral.getHeight());
+//        barraVertical.add(granajacorralesbtn);
+//        barraVertical.add(altaCorralesbtn);
+//        barraVertical.add(bajaCorralesbtn);
+//        barraVertical.add(editarCorralesbtn);
+//
+//        AdministrarCorral rsp2 = new AdministrarCorral();
+//        contenidoCentral.add(rsp2);
+//        rsp2.setVisible(true);
+//        rsp2.setBounds(0, 0, contenidoCentral.getWidth(), contenidoCentral.getHeight());
+        cargarBarraGranja();
         pack();
     }//GEN-LAST:event_granjabtnActionPerformed
 
@@ -725,8 +742,6 @@ public class Marco extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTree jTree1;
     private javax.swing.JButton salir1btn;
     private javax.swing.JButton salir2btn;
     private javax.swing.JButton sanidadbtn;
@@ -742,6 +757,11 @@ public class Marco extends javax.swing.JFrame {
     private JButton altaServiciobtn = new JButton("Alta Servicio");
     private JButton altaPreniesbtn = new JButton("Alta Preñes");
     
+    
+    
+    JButton btnCorrales = new JButton("CORRALES");
+    JButton btnMajadas = new JButton("MAJADAS");
+    JButton btnInsumos = new JButton("INSUMOS");
 
     
 }
