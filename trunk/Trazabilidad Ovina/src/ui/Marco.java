@@ -178,7 +178,7 @@ public class Marco extends javax.swing.JFrame {
         contenidoCentral.add(acontenidoCentral);
         acontenidoCentral.setVisible(true);
         acontenidoCentral.setBounds(0, 0, contenidoCentral.getWidth(), contenidoCentral.getHeight());    
-        acontenidoCentral.setBorder(null);
+        acontenidoCentral.setBorder(contenidoCentral.getBorder());
         acontenidoCentral.setVisible(true);
        
     }
@@ -369,6 +369,7 @@ public class Marco extends javax.swing.JFrame {
         salir1btn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         salir1btn.setFocusable(false);
         salir1btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        salir1btn.setPreferredSize(new java.awt.Dimension(140, 89));
         salir1btn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         salir1btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
