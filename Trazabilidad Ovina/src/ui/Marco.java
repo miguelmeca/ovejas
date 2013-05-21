@@ -10,6 +10,7 @@
  */
 package ui;
 
+import Frames.*;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
@@ -35,30 +36,137 @@ public class Marco extends javax.swing.JFrame {
         initComponentes();
         
 
+    btnCorrales.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            setContenidoCentral( new PnlABMCorrales());
+             pack();
+            }
+        });
+
+   
+     btnMajadas.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            setContenidoCentral( new PnlABMMajadas());
+             pack();
+            }
+        });
+         
+      btnInsumos.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            setContenidoCentral( new PnlABMInsumosGranja());
+             pack();
+            }
+        });
+             
+       btnMenues.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            setContenidoCentral( new PnlABMMenues());
+             pack();
+            }
+        });
+                 
+     btnRacion.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            setContenidoCentral( new PnlABMRacion());
+             pack();
+            }
+        });
+     
+       btnInsumosAlimentacion.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            setContenidoCentral( new PnlABMInsumoAlimentacion());
+             pack();
+            }
+        });
+     
+     btnTratamiento.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            setContenidoCentral( new PnlABMTratamiento());
+             pack();
+            }
+        });
+     
+       btnDosis.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            setContenidoCentral( new PnlABMDosis());
+             pack();
+            }
+        });
+     
+       btnInsumosSanidad.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            setContenidoCentral( new PnlABMInsumoSanidad());
+             pack();
+            }
+        });
+      
+      
+      btnCaja.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            setContenidoCentral( new PnlABMCaja());
+             pack();
+            }
+        });
+     
+       btnClientes.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            setContenidoCentral( new PnlABMCliente());
+             pack();
+            }
+        });
+     
+       btnProveedores.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            setContenidoCentral( new PnlABMProveedor());
+             pack();
+            }
+        });
+     
+       btnInformes.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            setContenidoCentral( new PnlABMInformes());
+             pack();
+            }
+        });
+      
+        btnServicio.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            setContenidoCentral( new PnlABMServicio());
+             pack();
+            }
+        });
        
-
-         granjabtn.addActionListener(new java.awt.event.ActionListener() {
-
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                AdministrarCorral rsp2 = new AdministrarCorral();
-//                contenidoCentral.add(rsp2);
-//                rsp2.setVisible(true);
-//                rsp2.setBounds(0, 0, contenidoCentral.getWidth(), contenidoCentral.getHeight());
-                
-                pack();
-            }
-        });
-
-          btnCorrales.addActionListener(new java.awt.event.ActionListener() {
+       btnPrenies.addActionListener(new java.awt.event.ActionListener() {
 
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AdministrarCorral rsp2 = new AdministrarCorral();
-                contenidoCentral.add(rsp2);
-                rsp2.setVisible(true);
-                rsp2.setBounds(0, 0, contenidoCentral.getWidth(), contenidoCentral.getHeight());
-                pack();
+            setContenidoCentral( new PnlABMPrenies());
+             pack();
             }
         });
+     
+       btnParto.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            setContenidoCentral( new PnlABMParto());
+             pack();
+            }
+        });
+             
+   
          
     }
 
@@ -67,7 +175,12 @@ public class Marco extends javax.swing.JFrame {
     }
 
     public static void setContenidoCentral(JPanel acontenidoCentral) {
-        contenidoCentral = acontenidoCentral;
+        contenidoCentral.add(acontenidoCentral);
+        acontenidoCentral.setVisible(true);
+        acontenidoCentral.setBounds(0, 0, contenidoCentral.getWidth(), contenidoCentral.getHeight());    
+        acontenidoCentral.setBorder(null);
+        acontenidoCentral.setVisible(true);
+       
     }
 
     public void Pack()
@@ -85,10 +198,7 @@ public class Marco extends javax.swing.JFrame {
        
     }
 
-    
    
-    
-    
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -560,15 +670,6 @@ public class Marco extends javax.swing.JFrame {
     private void granjabtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_granjabtnActionPerformed
         barraVertical.removeAll();
         barraVertical.repaint();
-//        barraVertical.add(granajacorralesbtn);
-//        barraVertical.add(altaCorralesbtn);
-//        barraVertical.add(bajaCorralesbtn);
-//        barraVertical.add(editarCorralesbtn);
-//
-//        AdministrarCorral rsp2 = new AdministrarCorral();
-//        contenidoCentral.add(rsp2);
-//        rsp2.setVisible(true);
-//        rsp2.setBounds(0, 0, contenidoCentral.getWidth(), contenidoCentral.getHeight());
         barraVertical.add(btnCorrales);
         barraVertical.add(btnMajadas);
         barraVertical.add(btnInsumos);
@@ -576,6 +677,8 @@ public class Marco extends javax.swing.JFrame {
         btnCorrales.setBounds(0,   0, barraVertical.getWidth(),50);
         btnMajadas.setBounds(0,   50, barraVertical.getWidth(),50);
         btnInsumos.setBounds(0,   100, barraVertical.getWidth(),50);
+        
+         
         pack();
     }//GEN-LAST:event_granjabtnActionPerformed
 
@@ -590,6 +693,7 @@ public class Marco extends javax.swing.JFrame {
         btnClientes.setBounds(0,   50, barraVertical.getWidth(),50);
         btnProveedores.setBounds(0,   100, barraVertical.getWidth(),50);
         btnInformes.setBounds(0,   150, barraVertical.getWidth(),50);
+        
         pack();
     }//GEN-LAST:event_administracionbtnActionPerformed
 
@@ -627,7 +731,7 @@ public class Marco extends javax.swing.JFrame {
     }//GEN-LAST:event_salir1btnActionPerformed
 
     private void sanidadbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sanidadbtnActionPerformed
-         barraVertical.removeAll();
+        barraVertical.removeAll();
         barraVertical.repaint();
         barraVertical.add(btnTratamiento);
         barraVertical.add(btnDosis);
@@ -637,9 +741,9 @@ public class Marco extends javax.swing.JFrame {
         btnInsumosSanidad.setBounds(0,   100, barraVertical.getWidth(),50);
         pack();
     }//GEN-LAST:event_sanidadbtnActionPerformed
-
+      
     /**
-     * @param args the command line arguments
+      *@param args the command line arguments
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -650,8 +754,7 @@ public class Marco extends javax.swing.JFrame {
         });
     }
 
-
-   
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton administracionbtn;
@@ -740,7 +843,7 @@ public class Marco extends javax.swing.JFrame {
     
     // botones barra vertical opcion "GRANJA"
     JButton btnCorrales = new JButton("CORRALES");
-    JButton btnMajadas = new JButton("MAJADAS");
+   JButton btnMajadas = new JButton("MAJADAS");
     JButton btnInsumos = new JButton("INSUMOS");
      
     // botones barra vertical opcion "ALIMENTACION"
