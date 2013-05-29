@@ -34,12 +34,11 @@ public class Marco extends javax.swing.JFrame {
     public Marco() {
         initComponents();
         initComponentes();
-        
 
     btnCorrales.addActionListener(new java.awt.event.ActionListener() {
 
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            setContenidoCentral( new PnlABMCorrales());
+            setContenidoCentral( new AdministrarCorral());
              pack();
             }
         });
