@@ -2,23 +2,19 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
-/*
- * PnlABMMajadas.java
- *
- * Created on 20/05/2013, 21:18:37
- */
 package Frames;
 
-/**
- *
- * @author usuario
- */
+import controllers.OvejaJpaController;
+import java.util.List;
+import model.Oveja;
+
 public class AgregarOvejaCorral extends javax.swing.JPanel {
 
     /** Creates new form PnlABMMajadas */
-    public AgregarOvejaCorral() {
+    public AgregarOvejaCorral(int corralEntrada) {
         initComponents();
+
+        inicializarPersonalizado(corralEntrada);
     }
 
     /** This method is called from within the constructor to
@@ -40,11 +36,18 @@ public class AgregarOvejaCorral extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(600, 600));
 
-        jLabel2.setText("Corral");
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setText("Corral:");
 
-        jLabel1.setText("Ovejas");
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setText("Ovejas:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -82,10 +85,10 @@ public class AgregarOvejaCorral extends javax.swing.JPanel {
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
                         .addComponent(jButton1)))
-                .addGap(136, 136, 136))
+                .addGap(150, 150, 150))
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
                 .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
@@ -100,17 +103,21 @@ public class AgregarOvejaCorral extends javax.swing.JPanel {
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))))
+                            .addComponent(jButton1)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(92, 92, 92)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(311, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+      
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -121,4 +128,48 @@ public class AgregarOvejaCorral extends javax.swing.JPanel {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    private void inicializarPersonalizado(int corral) {
+        
+        Integer corralent = corral;
+        jTextField1.setText(corralent.toString());
+        Integer corralid = Integer.parseInt(jTextField1.getText());
+        OvejaJpaController ovejaJpaController = new OvejaJpaController();
+        List<Oveja> ovejas = ovejaJpaController.findListaOvejaNoEstanCorral(corralid);
+
+        Integer[] nombreOveja = new Integer[ovejas.size()];
+        for(int i = 0; i < ovejas.size(); i++){
+            nombreOveja[i] = ovejas.get(i).getOvejarp();
+        }
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(nombreOveja));
+
+        LlenarGrilla();
+    }
+
+    private void LlenarGrilla(){
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "RP", "Sexo", "Fecha Alta", "Peso"
+                }
+        ));
+        Integer corralid = Integer.parseInt(jTextField1.getText());
+
+        OvejaJpaController ojc = new OvejaJpaController();
+        List<Oveja> ovejas = ojc.findListaOvejaPorCorral(corralid);
+        for(int i = 0; i < ovejas.size(); i++){
+            Oveja oveja = ovejas.get(i);
+            jTable1.setValueAt(oveja.getOvejarp(), i, 0);
+            jTable1.setValueAt(oveja.getOvejasexo(), i, 1);
+            jTable1.setValueAt(oveja.getOvejafechaalta(), i, 2);
+            jTable1.setValueAt(oveja.getOvejapeso(), i, 3);
+        }
+    }
+
 }
