@@ -397,6 +397,17 @@ public class OvejaJpaController {
         }
     }
 
+   public List<Oveja> findListaOvejaNoEstanCorral(Integer corralid){
+        EntityManager em = getEntityManager();
+        try{
+            Query q  = em.createQuery("select object(o) from Oveja as o where corralid <> " + corralid);
+
+            return q.getResultList();
+        } finally {
+            em.close();
+        } 
+   }
+
 
     public Oveja findOveja(Integer id) {
         EntityManager em = getEntityManager();
