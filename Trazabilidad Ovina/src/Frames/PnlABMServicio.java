@@ -10,6 +10,9 @@
  */
 package Frames;
 
+import javax.swing.JPanel;
+import ui.Marco;
+
 /**
  *
  * @author usuario
@@ -20,6 +23,15 @@ public class PnlABMServicio extends javax.swing.JPanel {
     public PnlABMServicio() {
         initComponents();
         nacimientoCalendar.setVisible(false);
+        jButton1.setVisible(false);
+        jTextField1.setEnabled(false);
+        jTextField2.setEnabled(false);
+        jTextField3.setEnabled(false);
+        jTextField4.setEnabled(false);
+        jCheckBox1.setEnabled(false);
+        jButton3.setEnabled(false);
+        jButton5.setEnabled(false);
+        jButton6.setEnabled(false);
     }
 
     /** This method is called from within the constructor to
@@ -109,6 +121,11 @@ public class PnlABMServicio extends javax.swing.JPanel {
                 jTextField1ActionPerformed(evt);
             }
         });
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+        });
         add(jTextField1);
         jTextField1.setBounds(90, 220, 100, 30);
 
@@ -157,11 +174,17 @@ public class PnlABMServicio extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        nacimientoCalendar.setVisible(true);        // TODO add your handling code here:
+        String mes, dia, anio;
+        dia= Integer.toString(nacimientoCalendar.getDayChooser().getDay());
+        mes= Integer.toString(nacimientoCalendar.getMonthChooser().getMonth()+1);
+        anio= Integer.toString(nacimientoCalendar.getYearChooser().getYear());
+        jTextField1.setText(dia+"/"+mes+"/"+anio);
+        jButton1.setVisible(false);
+        nacimientoCalendar.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -173,11 +196,19 @@ public class PnlABMServicio extends javax.swing.JPanel {
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        BuscarGenerico bg = new BuscarGenerico();
+        bg.setBounds(0, 0, Marco.getContenidoCentral().getWidth(), Marco.getContenidoCentral().getHeight());
+       Marco.setContenidoCentral(bg);
+      
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        jTextField1.setEnabled(true);
+        jTextField2.setEnabled(true);
+        jTextField3.setEnabled(true);
+        jTextField4.setEnabled(true);
+        jCheckBox1.setEnabled(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void nacimientoCalendarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nacimientoCalendarKeyPressed
@@ -187,14 +218,16 @@ public class PnlABMServicio extends javax.swing.JPanel {
     private void nacimientoCalendarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nacimientoCalendarMouseClicked
        //jTextField1.setText(nacimientoCalendar.getDate().toString());
        
-        String mes, dia, anio;
-        dia= Integer.toString(nacimientoCalendar.getDayChooser().getDay());
-        mes= Integer.toString(nacimientoCalendar.getMonthChooser().getMonth()+1);
-        anio= Integer.toString(nacimientoCalendar.getYearChooser().getYear());
-        jTextField1.setText(dia+"/"+mes+"/"+anio);
+       
        
     }//GEN-LAST:event_nacimientoCalendarMouseClicked
 
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+       nacimientoCalendar.setVisible(true); 
+       jButton1.setVisible(true);
+    }//GEN-LAST:event_jTextField1FocusGained
+
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
