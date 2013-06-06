@@ -171,9 +171,11 @@ public class Marco extends javax.swing.JFrame {
 
     public static JPanel getContenidoCentral() {
         return contenidoCentral;
+     
     }
 
     public static void setContenidoCentral(JPanel acontenidoCentral) {
+        contenidoCentral.removeAll();
         contenidoCentral.add(acontenidoCentral);
         acontenidoCentral.setVisible(true);
         acontenidoCentral.setBounds(0, 0, contenidoCentral.getWidth(), contenidoCentral.getHeight());    
@@ -287,6 +289,7 @@ public class Marco extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trazabilidad Ovina");
+        setForeground(java.awt.Color.white);
         setIconImages(getIconImages());
 
         barraHorizontal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -644,10 +647,10 @@ public class Marco extends javax.swing.JFrame {
                         .addComponent(barraVertical, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(contenidoCentral, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(salir2btn, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)))))
+                                .addGap(35, 35, 35))
+                            .addComponent(contenidoCentral, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
