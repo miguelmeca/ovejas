@@ -199,6 +199,7 @@ public class PnlABMServicio extends javax.swing.JPanel {
         BuscarGenerico bg = new BuscarGenerico();
         bg.setBounds(0, 0, Marco.getContenidoCentral().getWidth(), Marco.getContenidoCentral().getHeight());
        Marco.setContenidoCentral(bg);
+       
       
        
     }//GEN-LAST:event_jButton2ActionPerformed
