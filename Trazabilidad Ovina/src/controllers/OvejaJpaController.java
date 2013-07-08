@@ -408,6 +408,16 @@ public class OvejaJpaController {
         } 
    }
 
+     public Oveja findOvejaPorRP(Integer ovejaRP){
+        EntityManager em = getEntityManager();
+        try{
+            Query q  = em.createQuery("select object(o) from Oveja as o where ovejarp = " + ovejaRP);
+
+            return (Oveja) q.getSingleResult();
+        } finally {
+            em.close();
+        }
+   }
 
     public Oveja findOveja(Integer id) {
         EntityManager em = getEntityManager();
@@ -417,6 +427,8 @@ public class OvejaJpaController {
             em.close();
         }
     }
+
+
 
     public int getOvejaCount() {
         EntityManager em = getEntityManager();

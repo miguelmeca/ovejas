@@ -8,10 +8,10 @@ import controllers.OvejaJpaController;
 import java.util.List;
 import model.Oveja;
 
-public class AgregarOvejaCorral extends javax.swing.JPanel {
+public class EliminarOvejaCorral extends javax.swing.JPanel {
 
     /** Creates new form PnlABMMajadas */
-    public AgregarOvejaCorral(int corralEntrada) {
+    public EliminarOvejaCorral(int corralEntrada) {
         initComponents();
 
         inicializarPersonalizado(corralEntrada);
@@ -51,7 +51,7 @@ public class AgregarOvejaCorral extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Agregar");
+        jButton1.setText("Eliminar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
