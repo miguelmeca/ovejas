@@ -3,11 +3,6 @@
  * and open the template in the editor.
  */
 
-/*
- * PnlABMMajadas.java
- *
- * Created on 20/05/2013, 21:18:37
- */
 package Frames;
 
 import controllers.MajadaJpaController;
@@ -17,10 +12,6 @@ import javax.swing.JOptionPane;
 import model.Majada;
 import model.Oveja;
 
-/**
- *
- * @author usuario
- */
 public class AdministrarMajadas extends javax.swing.JPanel {
 
     /** Creates new form PnlABMMajadas */
@@ -189,6 +180,11 @@ public class AdministrarMajadas extends javax.swing.JPanel {
         );
 
         jButton1.setText("Agregar Majada");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("OK");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -258,7 +254,7 @@ public class AdministrarMajadas extends javax.swing.JPanel {
         jButton6.setEnabled(false);
 
         //Mostrar mensaje!
-        JOptionPane.showMessageDialog(null, "Se grabo exitosamente", "Nuevo Corral", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Se grabo exitosamente", "Nueva Majada", JOptionPane.INFORMATION_MESSAGE);
 }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -291,7 +287,7 @@ public class AdministrarMajadas extends javax.swing.JPanel {
         ));
 
         OvejaJpaController ojc = new OvejaJpaController();
-        List<Oveja> ovejas = ojc.findListaOvejaPorCorral(majada.getMajadaid());
+        List<Oveja> ovejas = ojc.findListaOvejaPorMajada(majada.getMajadaid());
 
         for(int i = 0; i < ovejas.size(); i++){
             Oveja oveja = ovejas.get(i);
@@ -301,6 +297,15 @@ public class AdministrarMajadas extends javax.swing.JPanel {
             jTable1.setValueAt(oveja.getOvejapeso(), i, 3);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jTextArea1.setEnabled(true);
+        jTextArea1.setText("");
+        jTextField1.setEnabled(true);
+        jTextField1.setText("");
+        jButton2.setEnabled(true);
+        jButton6.setEnabled(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
      private void inicializarPersonalizado() {
 
