@@ -47,7 +47,7 @@ public class Marco extends javax.swing.JFrame {
      btnMajadas.addActionListener(new java.awt.event.ActionListener() {
 
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            setContenidoCentral( new PnlABMMajadas());
+            setContenidoCentral( new AdministrarMajadas());
              pack();
             }
         });
