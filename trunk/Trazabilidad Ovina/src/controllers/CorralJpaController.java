@@ -157,6 +157,17 @@ public class CorralJpaController {
         return findCorralEntities(true, -1, -1);
     }
 
+    public List<Corral> findTodosCorralesMenosUno(int corralid) {
+        EntityManager em = getEntityManager();
+        try{
+            Query q  = em.createQuery("select object(o) from Corral as o where corralid <> " + corralid);
+
+            return q.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
     public List<Corral> findCorralEntities(int maxResults, int firstResult) {
         return findCorralEntities(false, maxResults, firstResult);
     }
@@ -179,6 +190,16 @@ public class CorralJpaController {
         EntityManager em = getEntityManager();
         try {
             return em.find(Corral.class, id);
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<Corral> findCorral(String nombre) {
+        EntityManager em = getEntityManager();
+        try{
+            Query q  = em.createQuery("select object(o) from Corral as o where corralnombre like ('" + nombre + "')");
+            return q.getResultList();
         } finally {
             em.close();
         }
