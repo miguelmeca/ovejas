@@ -26,57 +26,57 @@ public class AdministrarMajadas extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        jComboMajadas = new javax.swing.JComboBox();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldMajadaNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton6 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jTextAreaMajadaDescripcion = new javax.swing.JTextArea();
+        jButtonCancelar = new javax.swing.JButton();
+        jButtonAceptar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jTableMajadaOvejas = new javax.swing.JTable();
+        jButtonNuevaOveja = new javax.swing.JButton();
+        jButtonBorrarOveja = new javax.swing.JButton();
+        jButtonNuevaMajada = new javax.swing.JButton();
+        jButtonBuscarMajada = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(600, 600));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setText("Majadas: ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboMajadas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setPreferredSize(new java.awt.Dimension(540, 161));
 
-        jTextField1.setEnabled(false);
+        jTextFieldMajadaNombre.setEnabled(false);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 12));
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setText("Nombre");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12));
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setText("Descripcion");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setEnabled(false);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextAreaMajadaDescripcion.setColumns(20);
+        jTextAreaMajadaDescripcion.setRows(5);
+        jTextAreaMajadaDescripcion.setEnabled(false);
+        jScrollPane1.setViewportView(jTextAreaMajadaDescripcion);
 
-        jButton6.setText("Cancelar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButtonCancelarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Aceptar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAceptar.setText("Aceptar");
+        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonAceptarActionPerformed(evt);
             }
         });
 
@@ -93,13 +93,13 @@ public class AdministrarMajadas extends javax.swing.JPanel {
                             .addComponent(jLabel2))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldMajadaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton6)
+                        .addComponent(jButtonCancelar)
                         .addGap(53, 53, 53)
-                        .addComponent(jButton2)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addComponent(jButtonAceptar)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +107,7 @@ public class AdministrarMajadas extends javax.swing.JPanel {
                 .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldMajadaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -115,15 +115,15 @@ public class AdministrarMajadas extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton6)
-                            .addComponent(jButton2))))
-                .addContainerGap(11, Short.MAX_VALUE))
+                            .addComponent(jButtonCancelar)
+                            .addComponent(jButtonAceptar))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setPreferredSize(new java.awt.Dimension(540, 320));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableMajadaOvejas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -134,19 +134,19 @@ public class AdministrarMajadas extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jTableMajadaOvejas);
 
-        jButton4.setText("Agregar Oveja");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonNuevaOveja.setText("Agregar Oveja");
+        jButtonNuevaOveja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonNuevaOvejaActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Eliminar Oveja");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBorrarOveja.setText("Eliminar Oveja");
+        jButtonBorrarOveja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButtonBorrarOvejaActionPerformed(evt);
             }
         });
 
@@ -160,9 +160,9 @@ public class AdministrarMajadas extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(163, 163, 163)
-                .addComponent(jButton4)
+                .addComponent(jButtonNuevaOveja)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
-                .addComponent(jButton5)
+                .addComponent(jButtonBorrarOveja)
                 .addGap(58, 58, 58))
         );
         jPanel2Layout.setVerticalGroup(
@@ -172,22 +172,22 @@ public class AdministrarMajadas extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(jButtonNuevaOveja)
+                    .addComponent(jButtonBorrarOveja))
                 .addGap(19, 19, 19))
         );
 
-        jButton1.setText("Agregar Majada");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonNuevaMajada.setText("Agregar Majada");
+        jButtonNuevaMajada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonNuevaMajadaActionPerformed(evt);
             }
         });
 
-        jButton3.setText("OK");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBuscarMajada.setText("OK");
+        jButtonBuscarMajada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonBuscarMajadaActionPerformed(evt);
             }
         });
 
@@ -201,13 +201,13 @@ public class AdministrarMajadas extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboMajadas, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonBuscarMajada, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
-                        .addComponent(jButton1))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE))
+                        .addComponent(jButtonNuevaMajada))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -215,10 +215,10 @@ public class AdministrarMajadas extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
+                    .addComponent(jComboMajadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonNuevaMajada)
                     .addComponent(jLabel1)
-                    .addComponent(jButton3))
+                    .addComponent(jButtonBuscarMajada))
                 .addGap(29, 29, 29)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -227,52 +227,52 @@ public class AdministrarMajadas extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        jTextArea1.setText("");
-        jTextField1.setText("");
-        jTextArea1.setEnabled(false);
-        jTextField1.setEnabled(false);
-        jButton2.setEnabled(false);
-        jButton6.setEnabled(false);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        jTextAreaMajadaDescripcion.setText("");
+        jTextFieldMajadaNombre.setText("");
+        jTextAreaMajadaDescripcion.setEnabled(false);
+        jTextFieldMajadaNombre.setEnabled(false);
+        jButtonAceptar.setEnabled(false);
+        jButtonCancelar.setEnabled(false);
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
 
         MajadaJpaController majadaJpaController = new MajadaJpaController();
         Majada majada = new Majada();
-        majada.setMajadanombre(jTextField1.getText());
-        majada.setMajadadescripcion(jTextArea1.getText());
+        majada.setMajadanombre(jTextFieldMajadaNombre.getText());
+        majada.setMajadadescripcion(jTextAreaMajadaDescripcion.getText());
         majadaJpaController.create(majada);
 
-        jTextArea1.setText("");
-        jTextField1.setText("");
-        jTextArea1.setEnabled(false);
-        jTextField1.setEnabled(false);
-        jButton2.setEnabled(false);
-        jButton6.setEnabled(false);
+        jTextAreaMajadaDescripcion.setText("");
+        jTextFieldMajadaNombre.setText("");
+        jTextAreaMajadaDescripcion.setEnabled(false);
+        jTextFieldMajadaNombre.setEnabled(false);
+        jButtonAceptar.setEnabled(false);
+        jButtonCancelar.setEnabled(false);
 
         //Mostrar mensaje!
         JOptionPane.showMessageDialog(null, "Se grabo exitosamente", "Nueva Majada", JOptionPane.INFORMATION_MESSAGE);
-}//GEN-LAST:event_jButton2ActionPerformed
+}//GEN-LAST:event_jButtonAceptarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonNuevaOvejaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevaOvejaActionPerformed
         //Llama al frame que permite agregar ovejas a un corral. El corral es pasado por parametro
-       // Marco.setContenidoCentral(new AgregarOvejaCorral(jComboBox1.getSelectedIndex()));
-    }//GEN-LAST:event_jButton4ActionPerformed
+       // Marco.setContenidoCentral(new AgregarOvejaCorral(jComboMajadas.getSelectedIndex()));
+    }//GEN-LAST:event_jButtonNuevaOvejaActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButtonBorrarOvejaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarOvejaActionPerformed
         //Llama al frame que permite eliminar ovejas de un corral. El corral es pasado por parametro
-        //Marco.setContenidoCentral(new EliminarOvejaCorral(jComboBox1.getSelectedIndex()));
-}//GEN-LAST:event_jButton5ActionPerformed
+        //Marco.setContenidoCentral(new EliminarOvejaCorral(jComboMajadas.getSelectedIndex()));
+}//GEN-LAST:event_jButtonBorrarOvejaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonBuscarMajadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarMajadaActionPerformed
         Majada majada = new Majada();
         MajadaJpaController mjc = new MajadaJpaController();
-        majada = mjc.findMajada(jComboBox1.getSelectedIndex());
-        jTextField1.setText(majada.getMajadanombre());
-        jTextArea1.setText(majada.getMajadadescripcion());
+        majada = mjc.findMajada(jComboMajadas.getSelectedIndex());
+        jTextFieldMajadaNombre.setText(majada.getMajadanombre());
+        jTextAreaMajadaDescripcion.setText(majada.getMajadadescripcion());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableMajadaOvejas.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
                     {null, null, null, null},
                     {null, null, null, null},
@@ -289,21 +289,21 @@ public class AdministrarMajadas extends javax.swing.JPanel {
 
         for(int i = 0; i < ovejas.size(); i++){
             Oveja oveja = ovejas.get(i);
-            jTable1.setValueAt(oveja.getOvejarp(), i, 0);
-            jTable1.setValueAt(oveja.getOvejasexo(), i, 1);
-            jTable1.setValueAt(oveja.getOvejafechaalta(), i, 2);
-            jTable1.setValueAt(oveja.getOvejapeso(), i, 3);
+            jTableMajadaOvejas.setValueAt(oveja.getOvejarp(), i, 0);
+            jTableMajadaOvejas.setValueAt(oveja.getOvejasexo(), i, 1);
+            jTableMajadaOvejas.setValueAt(oveja.getOvejafechaalta(), i, 2);
+            jTableMajadaOvejas.setValueAt(oveja.getOvejapeso(), i, 3);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonBuscarMajadaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jTextArea1.setEnabled(true);
-        jTextArea1.setText("");
-        jTextField1.setEnabled(true);
-        jTextField1.setText("");
-        jButton2.setEnabled(true);
-        jButton6.setEnabled(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonNuevaMajadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevaMajadaActionPerformed
+        jTextAreaMajadaDescripcion.setEnabled(true);
+        jTextAreaMajadaDescripcion.setText("");
+        jTextFieldMajadaNombre.setEnabled(true);
+        jTextFieldMajadaNombre.setText("");
+        jButtonAceptar.setEnabled(true);
+        jButtonCancelar.setEnabled(true);
+    }//GEN-LAST:event_jButtonNuevaMajadaActionPerformed
 
      private void inicializarPersonalizado() {
 
@@ -314,19 +314,19 @@ public class AdministrarMajadas extends javax.swing.JPanel {
         for(int i = 0; i < majadas.size(); i++){
             nombreMajada[i] = majadas.get(i).getMajadanombre();
         }
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(nombreMajada));
-        jButton2.setEnabled(false);
-        jButton6.setEnabled(false);
+        jComboMajadas.setModel(new javax.swing.DefaultComboBoxModel(nombreMajada));
+        jButtonAceptar.setEnabled(false);
+        jButtonCancelar.setEnabled(false);
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JButton jButtonAceptar;
+    private javax.swing.JButton jButtonBorrarOveja;
+    private javax.swing.JButton jButtonBuscarMajada;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonNuevaMajada;
+    private javax.swing.JButton jButtonNuevaOveja;
+    private javax.swing.JComboBox jComboMajadas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -334,8 +334,8 @@ public class AdministrarMajadas extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable jTableMajadaOvejas;
+    private javax.swing.JTextArea jTextAreaMajadaDescripcion;
+    private javax.swing.JTextField jTextFieldMajadaNombre;
     // End of variables declaration//GEN-END:variables
 }

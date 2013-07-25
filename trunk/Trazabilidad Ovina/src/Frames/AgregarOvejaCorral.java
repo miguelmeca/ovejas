@@ -28,95 +28,95 @@ public class AgregarOvejaCorral extends javax.swing.JPanel {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        jComboBoxCorralOrigen = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        jComboBoxCorralDestino = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        jListOvejasCorralOrigen = new javax.swing.JList();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jListOvejasCorralDestino = new javax.swing.JList();
+        jButtonAgregarOvejaCorral = new javax.swing.JButton();
+        jButtonQuitarOvejaCorral = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreadescripcion = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButtonComfirmar = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(600, 600));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14));
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText("Corral Origen:");
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setText("Ovejas:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxCorralOrigen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxCorralOrigen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboBoxCorralOrigenActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 14));
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setText("Corral Destino:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxCorralDestino.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxCorralDestino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                jComboBoxCorralDestinoActionPerformed(evt);
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
+        jListOvejasCorralOrigen.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(jListOvejasCorralOrigen);
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 14));
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Ovejas:");
 
-        jList2.setModel(new javax.swing.AbstractListModel() {
+        jListOvejasCorralDestino.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jList2);
+        jScrollPane2.setViewportView(jListOvejasCorralDestino);
 
-        jButton1.setText(">>");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAgregarOvejaCorral.setText(">>");
+        jButtonAgregarOvejaCorral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonAgregarOvejaCorralActionPerformed(evt);
             }
         });
 
-        jButton2.setText("<<");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonQuitarOvejaCorral.setText("<<");
+        jButtonQuitarOvejaCorral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonQuitarOvejaCorralActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        jTextAreadescripcion.setColumns(20);
+        jTextAreadescripcion.setRows(5);
+        jScrollPane3.setViewportView(jTextAreadescripcion);
 
         jLabel5.setText("Descripción:");
 
-        jButton3.setText("Confirmar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonComfirmar.setText("Confirmar");
+        jButtonComfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonComfirmarActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Cancelar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonCancelarActionPerformed(evt);
             }
         });
 
@@ -132,7 +132,7 @@ public class AgregarOvejaCorral extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(10, 10, 10)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboBoxCorralOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel1))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -141,8 +141,8 @@ public class AgregarOvejaCorral extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(13, 13, 13)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton2)
-                                    .addComponent(jButton1)))))
+                                    .addComponent(jButtonQuitarOvejaCorral)
+                                    .addComponent(jButtonAgregarOvejaCorral)))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -151,15 +151,15 @@ public class AgregarOvejaCorral extends javax.swing.JPanel {
                             .addComponent(jLabel5))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxCorralDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton4)
+                        .addComponent(jButtonCancelar)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(288, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonComfirmar)
                 .addGap(233, 233, 233))
         );
         layout.setVerticalGroup(
@@ -168,9 +168,9 @@ public class AgregarOvejaCorral extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxCorralOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxCorralDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -182,93 +182,93 @@ public class AgregarOvejaCorral extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23)
-                        .addComponent(jButton1)
+                        .addComponent(jButtonAgregarOvejaCorral)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2))
+                        .addComponent(jButtonQuitarOvejaCorral))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jButtonComfirmar)
+                    .addComponent(jButtonCancelar))
                 .addContainerGap(198, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonAgregarOvejaCorralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarOvejaCorralActionPerformed
         // TODO add your handling code here:
-        jComboBox1.setEnabled(false);
-        jComboBox2.setEnabled(false);
-        DefaultListModel listaModelo = (DefaultListModel) jList1.getModel();
-        DefaultListModel listaModeloDst = (DefaultListModel) jList2.getModel();
+        jComboBoxCorralOrigen.setEnabled(false);
+        jComboBoxCorralDestino.setEnabled(false);
+        DefaultListModel listaModelo = (DefaultListModel) jListOvejasCorralOrigen.getModel();
+        DefaultListModel listaModeloDst = (DefaultListModel) jListOvejasCorralDestino.getModel();
     
-        if (jList1.getSelectedIndex() > -1){
-            listaModeloDst.addElement(jList1.getSelectedValue());
-            listaModelo.removeElement(jList1.getSelectedValue());
+        if (jListOvejasCorralOrigen.getSelectedIndex() > -1){
+            listaModeloDst.addElement(jListOvejasCorralOrigen.getSelectedValue());
+            listaModelo.removeElement(jListOvejasCorralOrigen.getSelectedValue());
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonAgregarOvejaCorralActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jComboBoxCorralOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCorralOrigenActionPerformed
 
         CorralJpaController corralJpaController = new CorralJpaController();
-        String corralNombre = (String)jComboBox1.getSelectedItem();
+        String corralNombre = (String)jComboBoxCorralOrigen.getSelectedItem();
         List<Corral> corralSeleccionado = corralJpaController.findCorral(corralNombre);
         
         CargarComboDestino(corralSeleccionado.get(0).getCorralid());
         
         CargarOvejasPorCorral(corralSeleccionado.get(0).getCorralid(), true);
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboBoxCorralOrigenActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void jComboBoxCorralDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCorralDestinoActionPerformed
 
         CorralJpaController corralJpaController = new CorralJpaController();
-        String corralNombre = (String)jComboBox2.getSelectedItem();
+        String corralNombre = (String)jComboBoxCorralDestino.getSelectedItem();
         List<Corral> corralSeleccionado = corralJpaController.findCorral(corralNombre);
 
         CargarOvejasPorCorral(corralSeleccionado.get(0).getCorralid(), false);
 
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_jComboBoxCorralDestinoActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        jComboBox1.setEnabled(true);
-        jComboBox2.setEnabled(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jButtonComfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComfirmarActionPerformed
+        jComboBoxCorralOrigen.setEnabled(true);
+        jComboBoxCorralDestino.setEnabled(true);
+    }//GEN-LAST:event_jButtonComfirmarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonQuitarOvejaCorralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitarOvejaCorralActionPerformed
         // TODO add your handling code here:
-        jComboBox1.setEnabled(false);
-        jComboBox2.setEnabled(false);
-        DefaultListModel listaModelo = (DefaultListModel) jList1.getModel();
-        DefaultListModel listaModeloDst = (DefaultListModel) jList2.getModel();
+        jComboBoxCorralOrigen.setEnabled(false);
+        jComboBoxCorralDestino.setEnabled(false);
+        DefaultListModel listaModelo = (DefaultListModel) jListOvejasCorralOrigen.getModel();
+        DefaultListModel listaModeloDst = (DefaultListModel) jListOvejasCorralDestino.getModel();
 
-        if (jList2.getSelectedIndex() > -1){
-            listaModelo.addElement(jList2.getSelectedValue());
-            listaModeloDst.removeElement(jList2.getSelectedValue());
+        if (jListOvejasCorralDestino.getSelectedIndex() > -1){
+            listaModelo.addElement(jListOvejasCorralDestino.getSelectedValue());
+            listaModeloDst.removeElement(jListOvejasCorralDestino.getSelectedValue());
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonQuitarOvejaCorralActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JButton jButtonAgregarOvejaCorral;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonComfirmar;
+    private javax.swing.JButton jButtonQuitarOvejaCorral;
+    private javax.swing.JComboBox jComboBoxCorralDestino;
+    private javax.swing.JComboBox jComboBoxCorralOrigen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JList jList1;
-    private javax.swing.JList jList2;
+    private javax.swing.JList jListOvejasCorralDestino;
+    private javax.swing.JList jListOvejasCorralOrigen;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextAreadescripcion;
     // End of variables declaration//GEN-END:variables
 
     private void inicializarPersonalizado(int corral) {
@@ -288,11 +288,11 @@ public class AgregarOvejaCorral extends javax.swing.JPanel {
         for (int i = 0; i < corrales.size(); i++){
             nombreCorralOrigen[i] = corrales.get(i).getCorralnombre();
         }
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(nombreCorralOrigen));
+        jComboBoxCorralOrigen.setModel(new javax.swing.DefaultComboBoxModel(nombreCorralOrigen));
         CorralJpaController cjc = new CorralJpaController();
         Corral corral = new Corral();
         corral = cjc.findCorral(corralid);
-        jComboBox1.setSelectedItem(corral.getCorralnombre());
+        jComboBoxCorralOrigen.setSelectedItem(corral.getCorralnombre());
 
         CargarOvejasPorCorral(corralid, true);
     }
@@ -306,8 +306,8 @@ public class AgregarOvejaCorral extends javax.swing.JPanel {
         for (int i = 0; i < corrales.size(); i++){
             nombreCorralDestino[i] = corrales.get(i).getCorralnombre();
         }
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(nombreCorralDestino));
-        String corralNombre = (String)jComboBox2.getSelectedItem();
+        jComboBoxCorralDestino.setModel(new javax.swing.DefaultComboBoxModel(nombreCorralDestino));
+        String corralNombre = (String)jComboBoxCorralDestino.getSelectedItem();
        
         List<Corral> corralSeleccionado = corralJpaController.findCorral(corralNombre);
         
@@ -319,9 +319,9 @@ public class AgregarOvejaCorral extends javax.swing.JPanel {
 
         DefaultListModel listaModelo = new DefaultListModel();
         if (bandera){
-            jList1.setModel(listaModelo);
+            jListOvejasCorralOrigen.setModel(listaModelo);
         } else {
-            jList2.setModel(listaModelo);
+            jListOvejasCorralDestino.setModel(listaModelo);
         }
 
         OvejaJpaController ovejaJpaController = new OvejaJpaController();
