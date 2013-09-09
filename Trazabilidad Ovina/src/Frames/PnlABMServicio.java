@@ -28,10 +28,12 @@ public class PnlABMServicio extends javax.swing.JPanel {
         jTextFieldRPMacho.setEnabled(false);
         jTextFieldRPHembra.setEnabled(false);
         jTextFieldServicio.setEnabled(false);
-        jCheckBox1.setEnabled(false);
+        //jCheckBox1.setEnabled(false);
         jButtonModificar.setEnabled(false);
         jButtonEliminar.setEnabled(false);
         jButtonReportes.setEnabled(false);
+        jButtonCalendarExito.setVisible(false );
+        jCalendarAlmanaque1.setVisible(false);
     }
 
     /** This method is called from within the constructor to
@@ -43,63 +45,153 @@ public class PnlABMServicio extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jTextFieldServicio = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextFieldRPMacho = new javax.swing.JTextField();
-        jTextFieldRPHembra = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCalendarAlmanaque = new com.toedter.calendar.JCalendar();
-        jTextFieldFecha = new javax.swing.JTextField();
-        jButtonCalendar = new javax.swing.JButton();
         jButtonBuscar = new javax.swing.JButton();
         jButtonNuevo = new javax.swing.JButton();
         jButtonModificar = new javax.swing.JButton();
         jButtonEliminar = new javax.swing.JButton();
         jButtonReportes = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jCalendarAlmanaque1 = new com.toedter.calendar.JCalendar();
+        jTextFieldFecha1 = new javax.swing.JTextField();
+        jButtonCalendarExito = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jTextFieldServicio = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldRPMacho = new javax.swing.JTextField();
+        jTextFieldRPHembra = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jCalendarAlmanaque = new com.toedter.calendar.JCalendar();
         jLabel2 = new javax.swing.JLabel();
+        jTextFieldFecha = new javax.swing.JTextField();
+        jButtonCalendar = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(449, 599));
         setPreferredSize(new java.awt.Dimension(599, 449));
         setLayout(null);
 
+        jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarActionPerformed(evt);
+            }
+        });
+        add(jButtonBuscar);
+        jButtonBuscar.setBounds(460, 20, 120, 25);
+
+        jButtonNuevo.setText("Nuevo");
+        jButtonNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNuevoActionPerformed(evt);
+            }
+        });
+        add(jButtonNuevo);
+        jButtonNuevo.setBounds(460, 60, 120, 25);
+
+        jButtonModificar.setText("Modiificar");
+        add(jButtonModificar);
+        jButtonModificar.setBounds(460, 100, 120, 25);
+
+        jButtonEliminar.setText("Eliminar");
+        add(jButtonEliminar);
+        jButtonEliminar.setBounds(460, 140, 120, 25);
+
+        jButtonReportes.setText("Informes");
+        add(jButtonReportes);
+        jButtonReportes.setBounds(460, 230, 120, 25);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Exito Servicio", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
+        jPanel1.setLayout(null);
+
+        jRadioButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jRadioButton1.setText("Exito");
+        jPanel1.add(jRadioButton1);
+        jRadioButton1.setBounds(20, 30, 63, 25);
+        jRadioButton1.getAccessibleContext().setAccessibleName("jRadioServicioExito");
+
+        jRadioButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jRadioButton2.setText("Fracaso");
+        jPanel1.add(jRadioButton2);
+        jRadioButton2.setBounds(20, 70, 85, 25);
+        jRadioButton2.getAccessibleContext().setAccessibleName("jRadioServicioFracaso");
+
+        jCalendarAlmanaque1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jCalendarAlmanaque1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCalendarAlmanaque1MouseClicked(evt);
+            }
+        });
+        jCalendarAlmanaque1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCalendarAlmanaque1KeyPressed(evt);
+            }
+        });
+        jPanel1.add(jCalendarAlmanaque1);
+        jCalendarAlmanaque1.setBounds(210, 60, 188, 133);
+
+        jTextFieldFecha1.setName("servicioFechaEXITOtxt"); // NOI18N
+        jTextFieldFecha1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldFecha1ActionPerformed(evt);
+            }
+        });
+        jTextFieldFecha1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldFecha1FocusGained(evt);
+            }
+        });
+        jPanel1.add(jTextFieldFecha1);
+        jTextFieldFecha1.setBounds(230, 20, 100, 30);
+
+        jButtonCalendarExito.setName("JButtonCalendarioServicioExito"); // NOI18N
+        jButtonCalendarExito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCalendarExitoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonCalendarExito);
+        jButtonCalendarExito.setBounds(360, 20, 33, 28);
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel5.setText("Fecha:");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(160, 30, 47, 17);
+
+        add(jPanel1);
+        jPanel1.setBounds(10, 220, 440, 200);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Servicio", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
+        jPanel2.setLayout(null);
+        jPanel2.add(jTextFieldServicio);
+        jTextFieldServicio.setBounds(90, 30, 100, 30);
+
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setText("Servicio:");
-        add(jLabel1);
-        jLabel1.setBounds(12, 17, 62, 17);
-        add(jTextFieldServicio);
-        jTextFieldServicio.setBounds(90, 10, 100, 30);
-
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel3.setText("Macho:");
-        add(jLabel3);
-        jLabel3.setBounds(12, 90, 51, 17);
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(20, 30, 62, 17);
 
         jTextFieldRPMacho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldRPMachoActionPerformed(evt);
             }
         });
-        add(jTextFieldRPMacho);
+        jPanel2.add(jTextFieldRPMacho);
         jTextFieldRPMacho.setBounds(90, 80, 100, 30);
-        add(jTextFieldRPHembra);
-        jTextFieldRPHembra.setBounds(90, 150, 100, 30);
+        jPanel2.add(jTextFieldRPHembra);
+        jTextFieldRPHembra.setBounds(90, 130, 100, 30);
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Hembra:");
-        add(jLabel4);
-        jLabel4.setBounds(10, 160, 58, 17);
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(20, 140, 58, 17);
 
-        jCheckBox1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jCheckBox1.setText("Exito");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
-            }
-        });
-        add(jCheckBox1);
-        jCheckBox1.setBounds(250, 100, 61, 25);
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setText("Macho:");
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(20, 80, 51, 17);
 
         jCalendarAlmanaque.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jCalendarAlmanaque.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -112,8 +204,13 @@ public class PnlABMServicio extends javax.swing.JPanel {
                 jCalendarAlmanaqueKeyPressed(evt);
             }
         });
-        add(jCalendarAlmanaque);
-        jCalendarAlmanaque.setBounds(110, 270, 188, 133);
+        jPanel2.add(jCalendarAlmanaque);
+        jCalendarAlmanaque.setBounds(220, 60, 188, 133);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setText("Fecha:");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(220, 30, 47, 17);
 
         jTextFieldFecha.setName("servicioFechatxt"); // NOI18N
         jTextFieldFecha.addActionListener(new java.awt.event.ActionListener() {
@@ -126,51 +223,19 @@ public class PnlABMServicio extends javax.swing.JPanel {
                 jTextFieldFechaFocusGained(evt);
             }
         });
-        add(jTextFieldFecha);
-        jTextFieldFecha.setBounds(90, 220, 100, 30);
+        jPanel2.add(jTextFieldFecha);
+        jTextFieldFecha.setBounds(280, 20, 100, 30);
 
         jButtonCalendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCalendarActionPerformed(evt);
             }
         });
-        add(jButtonCalendar);
-        jButtonCalendar.setBounds(230, 220, 33, 28);
+        jPanel2.add(jButtonCalendar);
+        jButtonCalendar.setBounds(390, 20, 33, 28);
 
-        jButtonBuscar.setText("Buscar");
-        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBuscarActionPerformed(evt);
-            }
-        });
-        add(jButtonBuscar);
-        jButtonBuscar.setBounds(400, 20, 120, 23);
-
-        jButtonNuevo.setText("Nuevo");
-        jButtonNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNuevoActionPerformed(evt);
-            }
-        });
-        add(jButtonNuevo);
-        jButtonNuevo.setBounds(400, 80, 120, 23);
-
-        jButtonModificar.setText("Modiificar");
-        add(jButtonModificar);
-        jButtonModificar.setBounds(400, 140, 120, 23);
-
-        jButtonEliminar.setText("Eliminar");
-        add(jButtonEliminar);
-        jButtonEliminar.setBounds(400, 210, 120, 23);
-
-        jButtonReportes.setText("Informes");
-        add(jButtonReportes);
-        jButtonReportes.setBounds(400, 280, 120, 23);
-
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setText("Fecha:");
-        add(jLabel2);
-        jLabel2.setBounds(10, 230, 47, 17);
+        add(jPanel2);
+        jPanel2.setBounds(10, 10, 440, 200);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFechaActionPerformed
@@ -191,10 +256,6 @@ public class PnlABMServicio extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldRPMachoActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
-
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
         BuscarGenerico bg = new BuscarGenerico();
         bg.setBounds(0, 0, Marco.getContenidoCentral().getWidth(), Marco.getContenidoCentral().getHeight());
@@ -209,7 +270,7 @@ public class PnlABMServicio extends javax.swing.JPanel {
         jTextFieldRPMacho.setEnabled(true);
         jTextFieldRPHembra.setEnabled(true);
         jTextFieldServicio.setEnabled(true);
-        jCheckBox1.setEnabled(true);        // TODO add your handling code here:
+       // jCheckBox1.setEnabled(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonNuevoActionPerformed
 
     private void jCalendarAlmanaqueKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCalendarAlmanaqueKeyPressed
@@ -228,21 +289,56 @@ public class PnlABMServicio extends javax.swing.JPanel {
        jButtonCalendar.setVisible(true);
     }//GEN-LAST:event_jTextFieldFechaFocusGained
 
+    private void jCalendarAlmanaque1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCalendarAlmanaque1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCalendarAlmanaque1MouseClicked
+
+    private void jCalendarAlmanaque1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCalendarAlmanaque1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCalendarAlmanaque1KeyPressed
+
+    private void jTextFieldFecha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFecha1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldFecha1ActionPerformed
+
+    private void jTextFieldFecha1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldFecha1FocusGained
+       jCalendarAlmanaque1.setVisible(true); 
+       jButtonCalendarExito.setVisible(true);
+    }//GEN-LAST:event_jTextFieldFecha1FocusGained
+
+    private void jButtonCalendarExitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalendarExitoActionPerformed
+        // TODO add your handling code here:                                                 
+        String mes, dia, anio;
+        dia= Integer.toString(jCalendarAlmanaque1.getDayChooser().getDay());
+        mes= Integer.toString(jCalendarAlmanaque1.getMonthChooser().getMonth()+1);
+        anio= Integer.toString(jCalendarAlmanaque1.getYearChooser().getYear());
+        jTextFieldFecha1.setText(dia+"/"+mes+"/"+anio);
+        jButtonCalendarExito.setVisible(false);
+        jCalendarAlmanaque1.setVisible(false);
+    }//GEN-LAST:event_jButtonCalendarExitoActionPerformed
+
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonCalendar;
+    private javax.swing.JButton jButtonCalendarExito;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonModificar;
     private javax.swing.JButton jButtonNuevo;
     private javax.swing.JButton jButtonReportes;
     private com.toedter.calendar.JCalendar jCalendarAlmanaque;
-    private javax.swing.JCheckBox jCheckBox1;
+    private com.toedter.calendar.JCalendar jCalendarAlmanaque1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField jTextFieldFecha;
+    private javax.swing.JTextField jTextFieldFecha1;
     private javax.swing.JTextField jTextFieldRPHembra;
     private javax.swing.JTextField jTextFieldRPMacho;
     private javax.swing.JTextField jTextFieldServicio;
